@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Welcome to use the TableGo Tools.
+    
+    http://www.tablego.cn
+    
+    http://vipbooks.iteye.com
+    http://blog.csdn.net/vipbooks
+    http://www.cnblogs.com/vipbooks
+    
+    Author: bianj
+    Email: tablego@qq.com
+    Version: 6.8.0
+-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- stock -->
+<mapper namespace="com.dao.stockMapper">
+
+    
+    <!-- 查询所有数据 -->
+    <select id="findStockVoAll" resultType="com.BeanVo.StockVo">
+        SELECT stock.* ,goods.gname,wname,buy.expiration
+        FROM stock
+				LEFT JOIN goods ON goods.id  = stock.gid
+				LEFT JOIN warehouse ON warehouse.wid = stock.warehouseId
+				LEFT JOIN intable ON intable.inid = stock.inid
+				LEFT JOIN buy ON buy.buyid = intable.buyid
+
+    </select>
+
+    <!-- 查询库存下是否存在此商品id -->
+    <select id="findStockByGid" resultType="com.Bean.Inventory.Stock" parameterType="java.lang.Integer">
+        SELECT stock.gid,stock.stockid
+        FROM stock
+        WHERE stock.gid = #{gid};
+    </select>
+
+
+
+
+    <!-- 插入数据 -->
+    <insert id="insertStock" parameterType="map">
+        INSERT INTO stock (
+             inid, quantity, warehouseId, gid, produced, expiration
+        ) VALUES (
+
+            #{inid},
+            #{quantity},
+            #{warehouseId},
+            #{gid},
+            #{produced},
+            #{expiration}
+        )
+    </insert>
+
+    <!-- 根据主键批量删除数据 -->
+    <delete id="deleteStockByIds" parameterType="list">
+        DELETE FROM stock WHERE stockid IN
+        <foreach collection="list" index="index" item="stockid" open="(" separator="," close=")">
+            #{stockid}
+        </foreach>
+    </delete>
+
+
+
+    <!-- 修改数据 -->
+    <update id="updateStock" parameterType="com.Bean.Inventory.Stock">
+        UPDATE stock
+        <set>
+            <if test="inid != null">
+                inid = #{inid},
+            </if>
+            <if test="quantity != null">
+                quantity = #{quantity},
+            </if>
+            <if test="warehouseId != null">
+                warehouseId = #{warehouseId},
+            </if>
+            <if test="gid != null">
+                gid = #{gid},
+            </if>
+            <if test="produced != null">
+                produced = #{produced},
+            </if>
+            <if test="expiration != null">
+                expiration = #{expiration}
+            </if>
+        </set>
+        WHERE stockid = #{stockid}
+    </update>
+
+
+<!--   根据主键查找仓库-->
+    <!-- 根据主键查询数据 -->
+    <select id="findWarehouseById" resultType="com.Bean.Inventory.Warehouse" parameterType="java.lang.Integer">
+        SELECT
+        warehouse.*
+        FROM warehouse WHERE wid  = #{wid};
+    </select>
+</mapper>

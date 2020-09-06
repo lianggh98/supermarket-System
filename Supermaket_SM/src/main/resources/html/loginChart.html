@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body >
+<style>
+    .chart-container {
+        position: relative;
+        width: 100%;
+        margin-top: 70px;
+
+    }
+</style>
+<script src="js/Chart.js"></script>
+
+<div class="chart-container">
+    <canvas id="myChart"></canvas>
+</div>
+
+    <p id="test"></p>
+
+<script>
+    function getLoginRecordDateByJava(info) {
+
+        let ctx = document.getElementById("myChart").getContext('2d');
+
+        new Chart(ctx,
+            {
+                type:"pie",
+                data:{"labels":["管理账号","白班","晚班"],
+                    datasets:[{"label":"My First Dataset",
+                        data:[info[0],info[1],info[2]],
+                        backgroundColor:[
+                            "rgb(255, 99, 132)",
+                            "rgb(75, 192, 192)",
+                            "rgb(255, 205, 86)"
+                        ]
+                    }]
+                },
+                options: {
+                    legend: {
+                        position: 'right',
+                    }
+                }
+            }
+        );
+    }
+</script>
+</body>
+</html>

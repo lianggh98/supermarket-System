@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Welcome to use the TableGo Tools.
+    
+    http://www.tablego.cn
+    
+    http://vipbooks.iteye.com
+    http://blog.csdn.net/vipbooks
+    http://www.cnblogs.com/vipbooks
+    
+    Author: bianj
+    Email: tablego@qq.com
+    Version: 6.8.0
+-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- stock -->
+<mapper namespace="com.dao.buyMapper">
+
+    <!-- 查询Buy所有数据 -->
+    <select id="findBuyVoAll" resultType="com.BeanVo.BuyVo">
+        SELECT buy.*,g.gname,supplier.`name` AS supname,persons.pname
+        FROM `buy`
+        LEFT JOIN supplier ON buy.supplier = supplier.id
+        LEFT JOIN goods g ON buy.gid = g.id
+        LEFT JOIN persons persons ON buy.pid = persons.id
+    </select>
+
+
+<!--    查找inTable表下是否有当前buyid-->
+    <select id="findinTableByBuyId" resultType="java.lang.Integer" >
+        SELECT intable.buyid
+        FROM intable
+        LEFT JOIN buy ON buy.buyid =  intable.buyid
+    </select>
+
+    <!-- 根据主键批量删除数据 -->
+    <delete id="deleteBuyByIds" parameterType="list">
+        DELETE FROM buy WHERE buyid IN
+        <foreach collection="list" index="index" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+<!--    根据进货商id获取进货商名称-->
+    <select id="findSupplierNameByid" resultType="com.Bean.Buy.Supplier">
+        SELECT supplier.*
+        FROM `supplier`
+        WHERE supplier.id = #{id}
+    </select>
+
+
+
+    <!-- 批量插入数据 -->
+    <insert id="insertBuys" parameterType="list">
+        INSERT INTO buy (
+        buyid, gid, comeTime, model, quantity, price, prices, produced,
+        supplier, pid, expiration
+        ) VALUES
+        <foreach collection="list" index="index" item="item" separator=",">
+            (
+            #{item.buyid},
+            #{item.gid},
+            #{item.comeTime},
+            #{item.model},
+            #{item.quantity},
+            #{item.price},
+            #{item.prices},
+            #{item.produced},
+            #{item.supplier},
+            #{item.pid},
+            #{item.expiration}
+            )
+        </foreach>
+    </insert>
+
+    <!-- 修改数据 -->
+    <update id="updateBuy" parameterType="com.Bean.Buy.Buy">
+        UPDATE buy
+        <set>
+            <if test="gid != null">
+                gid = #{gid},
+            </if>
+            <if test="comeTime != null">
+                comeTime = #{comeTime},
+            </if>
+            <if test="model != null">
+                model = #{model},
+            </if>
+            <if test="quantity != null">
+                quantity = #{quantity},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="prices != null">
+                prices = #{prices},
+            </if>
+            <if test="produced != null">
+                produced = #{produced},
+            </if>
+            <if test="supplier != null">
+                supplier = #{supplier},
+            </if>
+            <if test="pid != null">
+                pid = #{pid},
+            </if>
+            <if test="expiration != null">
+                expiration = #{expiration}
+            </if>
+        </set>
+        WHERE buyid = #{buyid}
+    </update>
+
+
+    <!-- 根据主键查询数据 -->
+    <select id="findBuyByIds" resultType="com.Bean.Buy.Buy" parameterType="java.lang.Integer">
+        SELECT
+        buy.*
+        FROM buy WHERE buyid = #{buyid}
+    </select>
+
+
+<!--   获取每一天的采购数-->
+    <select id="findEveryDayBuyRecord" resultType="com.Bean.Buy.Buy" parameterType="map">
+        SELECT buy.buyid
+        FROM `buy`
+        WHERE buy.comeTime
+        BETWEEN #{startTime} and #{endTime}
+    </select>
+    
+<!--    计算今日采购支出-->
+    <select id="sumTodayExpend" resultType="java.lang.Double" parameterType="map">
+        SELECT
+        SUM(buy.prices) AS prices
+        FROM `buy`
+        WHERE buy.comeTime
+        BETWEEN #{startTime} and #{endTime}
+    </select>
+
+<!--    查找intable不存在的数据-->
+    <select id="findinTbaleNoDate" resultType="java.lang.Integer">
+        SELECT
+           buy.buyid
+        FROM buy
+        WHERE
+             1=1
+             AND (
+                    SELECT
+                           COUNT(1)
+                    FROM intable
+                    WHERE intable.buyid=buy.buyid
+
+             )=0;
+    </select>
+</mapper>

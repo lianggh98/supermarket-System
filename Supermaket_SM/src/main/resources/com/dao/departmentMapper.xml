@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Welcome to use the TableGo Tools.
+    
+    http://www.tablego.cn
+    
+    http://vipbooks.iteye.com
+    http://blog.csdn.net/vipbooks
+    http://www.cnblogs.com/vipbooks
+    
+    Author: bianj
+    Email: tablego@qq.com
+    Version: 6.8.0
+-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- department -->
+<mapper namespace="com.dao.departmentMapper">
+    <!-- 字段映射 -->
+    <resultMap id="departmentMap" type="com.Bean.Persons.Department">
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="depname" property="depname" jdbcType="VARCHAR" />
+    </resultMap>
+    
+    <!-- 表查询字段 -->
+    <sql id="allColumns">
+        id, depname
+    </sql>
+    
+    <!-- 查询所有数据 -->
+    <select id="findDepartmentAll" resultMap="departmentMap">
+        SELECT * FROM department order by id asc
+    </select>
+
+    <!-- 查询所有数据 -->
+    <select id="findPostAll" resultType="com.Bean.Persons.Post">
+        SELECT
+                 id, postname
+        FROM post
+    </select>
+
+
+
+
+    <!-- 人员汇总 -->
+    <select id="count_personsByDep" resultType="com.Bean.Persons.Pcount" >
+        SELECT department.depname ,
+        COUNT(*) as Pcount
+        FROM `persons` persons
+        LEFT JOIN department
+        ON department.id = persons.depid
+        GROUP BY persons.depid
+
+    </select>
+
+
+</mapper>

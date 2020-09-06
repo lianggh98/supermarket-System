@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <VBox prefHeight="859.0" prefWidth="175.0" style="-fx-background-color: #141619;" BorderPane.alignment="CENTER">
+          <children>
+              <ImageView fitHeight="134.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                  <image>
+                      <Image url="@../new_images/shop_car.png" />
+                  </image>
+                  <VBox.margin>
+                      <Insets bottom="20.0" left="30.0" top="15.0" />
+                  </VBox.margin></ImageView>
+              <HBox prefHeight="0.0" prefWidth="191.0" spacing="10.0" styleClass="hobx">
+                  <VBox.margin>
+                      <Insets bottom="15.0" />
+                  </VBox.margin>
+                  <padding>
+                      <Insets left="25.0" />
+                  </padding>
+              </HBox>
+              <HBox prefHeight="65.0" prefWidth="218.0" spacing="10.0" styleClass="hobx">
+                  <children>
+                      <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../new_images/icon_2.png" />
+                          </image>
+                          <HBox.margin>
+                              <Insets top="15.0" />
+                          </HBox.margin>
+                      </ImageView>
+                      <Label prefHeight="65.0" prefWidth="157.0" text="主菜单" textFill="#a5a8abd1">
+                          <font>
+                              <Font name="Microsoft JhengHei" size="20.0" />
+                          </font>
+                      </Label>
+                  </children>
+                  <padding>
+                      <Insets left="25.0" />
+                  </padding>
+                  <VBox.margin>
+                      <Insets bottom="15.0" />
+                  </VBox.margin>
+              </HBox>
+              <HBox fx:id="hob2" prefHeight="65.0" prefWidth="218.0" spacing="10.0">
+                  <children>
+                      <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../new_images/icon_3.png" />
+                          </image>
+                          <HBox.margin>
+                              <Insets top="15.0" />
+                          </HBox.margin></ImageView>
+                      <Label prefHeight="65.0" prefWidth="157.0" text="销售记录" textFill="#a5a8abd1">
+                          <font>
+                              <Font name="Microsoft JhengHei" size="20.0" />
+                          </font>
+                      </Label>
+                  </children>
+                  <VBox.margin>
+                      <Insets bottom="15.0" />
+                  </VBox.margin>
+                  <padding>
+                      <Insets left="25.0" />
+                  </padding>
+              </HBox>
+              <HBox fx:id="hbox3" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="65.0" prefWidth="218.0" spacing="10.0">
+                  <children>
+                      <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../new_images/icon_4.png" />
+                          </image>
+                          <HBox.margin>
+                              <Insets top="15.0" />
+                          </HBox.margin></ImageView>
+                      <Label prefHeight="65.0" prefWidth="157.0" text="库存" textFill="#a5a8abd1">
+                          <font>
+                              <Font name="Microsoft JhengHei" size="20.0" />
+                          </font>
+                      </Label>
+                  </children>
+                  <VBox.margin>
+                      <Insets bottom="15.0" />
+                  </VBox.margin>
+                  <padding>
+                      <Insets left="25.0" />
+                  </padding>
+              </HBox>
+              <HBox fx:id="hbox4" prefHeight="65.0" prefWidth="218.0" spacing="10.0">
+                  <children>
+                      <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../new_images/icon_5.png" />
+                          </image>
+                          <HBox.margin>
+                              <Insets top="15.0" />
+                          </HBox.margin></ImageView>
+                      <Label prefHeight="65.0" prefWidth="157.0" text="采购管理" textFill="#a5a8abd1">
+                          <font>
+                              <Font name="Microsoft JhengHei" size="20.0" />
+                          </font>
+                      </Label>
+                  </children>
+                  <VBox.margin>
+                      <Insets bottom="15.0" />
+                  </VBox.margin>
+                  <padding>
+                      <Insets left="25.0" />
+                  </padding>
+              </HBox>
+              <HBox fx:id="hbox5" prefHeight="65.0" prefWidth="218.0" spacing="10.0">
+                  <children>
+                      <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../new_images/icon_6.png" />
+                          </image>
+                          <HBox.margin>
+                              <Insets top="15.0" />
+                          </HBox.margin></ImageView>
+                      <Label prefHeight="65.0" prefWidth="157.0" text="商品信息" textFill="#a5a8abd1">
+                          <font>
+                              <Font name="Microsoft JhengHei" size="20.0" />
+                          </font>
+                      </Label>
+                  </children>
+                  <VBox.margin>
+                      <Insets bottom="15.0" />
+                  </VBox.margin>
+                  <padding>
+                      <Insets left="25.0" />
+                  </padding>
+              </HBox>
+              <HBox fx:id="hbox6" prefHeight="65.0" prefWidth="218.0" spacing="10.0">
+                  <children>
+                      <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../new_images/icon_7.png" />
+                          </image>
+                          <HBox.margin>
+                              <Insets top="15.0" />
+                          </HBox.margin></ImageView>
+                      <Label prefHeight="65.0" prefWidth="157.0" text="人员管理" textFill="#a5a8abd1">
+                          <font>
+                              <Font name="Microsoft JhengHei" size="20.0" />
+                          </font>
+                      </Label>
+                  </children>
+                  <VBox.margin>
+                      <Insets bottom="15.0" />
+                  </VBox.margin>
+                  <padding>
+                      <Insets left="25.0" />
+                  </padding>
+              </HBox>
+              <HBox fx:id="hbox7" prefHeight="65.0" prefWidth="218.0" spacing="10.0">
+                  <children>
+                      <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../new_images/icon_8.png" />
+                          </image>
+                          <HBox.margin>
+                              <Insets top="15.0" />
+                          </HBox.margin></ImageView>
+                      <Label prefHeight="65.0" prefWidth="157.0" text="设置" textFill="#a5a8abd1">
+                          <font>
+                              <Font name="Microsoft JhengHei" size="20.0" />
+                          </font>
+                      </Label>
+                  </children>
+                  <VBox.margin>
+                      <Insets bottom="15.0" />
+                  </VBox.margin>
+                  <padding>
+                      <Insets left="25.0" />
+                  </padding>
+              </HBox>
+          </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

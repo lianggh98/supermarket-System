@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDialog?>
+<?import com.jfoenix.controls.JFXDialogLayout?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableColumn?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="951.0" prefWidth="1594.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.new_conotroller.index.setController">
+    <children>
+        <Pane maxHeight="50.0" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="1152.0" style="-fx-background-color: #141619;" VBox.vgrow="ALWAYS">
+            <children>
+                <StackPane maxHeight="80.0" prefHeight="50.0" prefWidth="141.0">
+                    <children>
+                        <Label prefHeight="32.0" prefWidth="75.0" text="设置" textFill="#c4c4c5">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </StackPane>
+            </children></Pane>
+      <VBox prefHeight="684.0" prefWidth="1277.0" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox prefHeight="393.0" prefWidth="1206.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <StackPane fx:id="wRoot" prefHeight="393.0" prefWidth="320.0" style="-fx-background-color: #fff;" styleClass="div_radius" stylesheets="@../../new_css/index.css">
+                     <children>
+                        <VBox prefHeight="393.0" prefWidth="312.0" styleClass="div_radius" stylesheets="@../../new_css/index.css">
+                           <children>
+                              <StackPane prefHeight="28.0" prefWidth="320.0" style="-fx-background-color: #808080;">
+                                 <children>
+                                    <ImageView fitHeight="38.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                                       <image>
+                                          <Image url="@../../new_images/set/仓库.png" />
+                                       </image>
+                                       <StackPane.margin>
+                                          <Insets bottom="5.0" left="5.0" top="5.0" />
+                                       </StackPane.margin>
+                                    </ImageView>
+                                    <Label alignment="CENTER" prefHeight="20.0" prefWidth="71.0" text="仓库设置" textFill="WHITE" StackPane.alignment="CENTER_LEFT">
+                                       <StackPane.margin>
+                                          <Insets left="40.0" />
+                                       </StackPane.margin>
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <HBox maxHeight="47.0" minHeight="47.0" prefHeight="47.0" prefWidth="265.0" style="-fx-background-color: #fff; -fx-border-color: #C8C8C8;">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="52.0" prefWidth="56.0" style="-fx-border-color: #fff #F3F3F3 #fff transparent ; -fx-border-width: 2" text="编号">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="86.0" prefWidth="96.0" style="-fx-border-color: #fff #F3F3F3 #fff #fff; -fx-border-width: 2" text="仓库名称">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="154.0" style="-fx-border-color: transparent transparent #f3f3f3 transparent;-fx-border-width: 2;" text="操作">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <HBox prefHeight="21.0" prefWidth="111.0" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="111.0" text="修改" />
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="111.0" text="删除" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                              <JFXListView fx:id="listView" prefHeight="266.0" prefWidth="320.0" style="-fx-border-color: #fff;" />
+                              <HBox prefHeight="57.0" prefWidth="320.0">
+                                 <children>
+                                    <StackPane prefHeight="150.0" prefWidth="56.0">
+                                       <children>
+                                          <JFXTextField fx:id="widText" onKeyTyped="#selectWid" />
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="5.0" right="15.0" />
+                                       </HBox.margin>
+                                    </StackPane>
+                                    <StackPane prefHeight="150.0" prefWidth="96.0">
+                                       <children>
+                                          <JFXTextField fx:id="wNameText" />
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </StackPane>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                       <children>
+                                          <JFXButton onMouseClicked="#whouseInsert" prefHeight="36.0" prefWidth="58.0" style="-fx-background-color: #16a951;" text="添加" />
+                                       </children>
+                                    </StackPane>
+                                 </children></HBox>
+                           </children>
+                        </VBox>
+                        <JFXDialog fx:id="Wdialog">
+                           <content>
+                              <JFXDialogLayout>
+                                 <heading>
+                                    <Label style="-fx-text-fill: black">提示</Label>
+                                 </heading>
+                                 <body>
+                                    <Label fx:id="L_wDialog" style="-fx-text-fill: black" />
+                                 </body>
+                                 <actions>
+                                    <JFXButton fx:id="WacceptButton" style="-fx-text-fill: black" styleClass="dialog-accept">ACCEPT
+                                    </JFXButton>
+                                 </actions>
+                              </JFXDialogLayout>
+                           </content>
+                        </JFXDialog>
+                     </children>
+                  </StackPane>
+                  <StackPane fx:id="bRoot" prefHeight="393.0" prefWidth="320.0" style="-fx-background-color: #fff;" styleClass="div_radius" stylesheets="@../../new_css/index.css">
+                     <children>
+                        <VBox prefHeight="393.0" prefWidth="312.0" styleClass="div_radius" stylesheets="@../../new_css/index.css">
+                           <children>
+                              <StackPane prefHeight="28.0" prefWidth="320.0" style="-fx-background-color: #808080;">
+                                 <children>
+                                    <ImageView fitHeight="38.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                                       <image>
+                                          <Image url="@../../new_images/set/仓库.png" />
+                                       </image>
+                                       <StackPane.margin>
+                                          <Insets bottom="5.0" left="5.0" top="5.0" />
+                                       </StackPane.margin>
+                                    </ImageView>
+                                    <Label alignment="CENTER" prefHeight="20.0" prefWidth="107.0" text="商品类别设置" textFill="WHITE" StackPane.alignment="CENTER_LEFT">
+                                       <StackPane.margin>
+                                          <Insets left="40.0" />
+                                       </StackPane.margin>
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <HBox maxHeight="47.0" minHeight="47.0" prefHeight="47.0" prefWidth="265.0" style="-fx-background-color: #fff; -fx-border-color: #C8C8C8;">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="52.0" prefWidth="56.0" style="-fx-border-color: #fff #F3F3F3 #fff transparent ; -fx-border-width: 2" text="编号">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="86.0" prefWidth="96.0" style="-fx-border-color: #fff #F3F3F3 #fff #fff; -fx-border-width: 2" text="类别名称">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="154.0" style="-fx-border-color: transparent transparent #f3f3f3 transparent;-fx-border-width: 2;" text="操作">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <HBox prefHeight="21.0" prefWidth="111.0" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="111.0" text="修改" />
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="111.0" text="删除" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                              <JFXListView fx:id="bClassListView" prefHeight="266.0" prefWidth="320.0" style="-fx-border-color: #fff;" />
+                              <HBox prefHeight="57.0" prefWidth="320.0">
+                                 <children>
+                                    <StackPane prefHeight="150.0" prefWidth="56.0">
+                                       <children>
+                                          <JFXTextField fx:id="bidText" onKeyTyped="#existThisBid" />
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="5.0" right="15.0" />
+                                       </HBox.margin>
+                                    </StackPane>
+                                    <StackPane prefHeight="150.0" prefWidth="96.0">
+                                       <children>
+                                          <JFXTextField fx:id="bNameTxt" />
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </StackPane>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                       <children>
+                                          <JFXButton onMouseClicked="#bClassInsert" prefHeight="36.0" prefWidth="58.0" style="-fx-background-color: #16a951;" text="添加" />
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <JFXDialog fx:id="bDialog">
+                           <content>
+                              <JFXDialogLayout>
+                                 <heading>
+                                    <Label style="-fx-text-fill: black" />
+                                 </heading>
+                                 <body>
+                                    <Label fx:id="L_bDialog" style="-fx-text-fill: black" />
+                                 </body>
+                                 <actions>
+                                    <JFXButton fx:id="bAcceptButton" style="-fx-text-fill: black" styleClass="dialog-accept">
+                                       ACCEPT
+                                    </JFXButton>
+                                 </actions>
+                              </JFXDialogLayout>
+                           </content>
+                        </JFXDialog>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </StackPane>
+                  <StackPane fx:id="supplierRoot" prefHeight="384.0" prefWidth="576.0" style="-fx-background-color: #fff;" styleClass="div_radius" stylesheets="@../../new_css/index.css" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10" VBox.vgrow="ALWAYS">
+                           <children>
+                              <StackPane prefHeight="28.0" prefWidth="320.0" style="-fx-background-color: #808080;">
+                                 <children>
+                                    <ImageView fitHeight="38.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                                       <image>
+                                          <Image url="@../../new_images/set/仓库.png" />
+                                       </image>
+                                       <StackPane.margin>
+                                          <Insets bottom="5.0" left="5.0" top="5.0" />
+                                       </StackPane.margin>
+                                    </ImageView>
+                                    <Label alignment="CENTER" prefHeight="20.0" prefWidth="107.0" text="进货商设置" textFill="WHITE" StackPane.alignment="CENTER_LEFT">
+                                       <StackPane.margin>
+                                          <Insets left="40.0" />
+                                       </StackPane.margin>
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <JFXTreeTableView fx:id="supplierTreeTableView" maxWidth="578.0" prefWidth="578.0">
+                                       <columns>
+      
+      
+                                          <JFXTreeTableColumn fx:id="supplierId" prefWidth="40.0" text="编号" />
+                                          <JFXTreeTableColumn fx:id="supplierName" prefWidth="87.0" text="进货商名称" />
+                                          <JFXTreeTableColumn fx:id="supplierTel" prefWidth="110.0" text="联系方式" />
+                                          <JFXTreeTableColumn fx:id="supplierAddr" minWidth="0.0" prefWidth="122.0" text="地址" />
+                                          <JFXTreeTableColumn prefWidth="216.0" text="操作">
+                                             <columns>
+                                                <JFXTreeTableColumn fx:id="supplierUpdate" minWidth="0.0" prefWidth="112.0" text="修改" />
+                                                <JFXTreeTableColumn fx:id="supplierDelete" minWidth="0.0" prefWidth="104.0" text="删除" />
+                                             </columns>
+                                          </JFXTreeTableColumn>
+      
+                                       </columns>
+                                    </JFXTreeTableView>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <StackPane prefHeight="21.0" prefWidth="316.0">
+                                             <children>
+                                                <Label text="编号" StackPane.alignment="CENTER_LEFT">
+                                                   <StackPane.margin>
+                                                      <Insets left="80.0" />
+                                                   </StackPane.margin>
+                                                </Label>
+                                                <JFXTextField fx:id="supplierIdText" maxWidth="100.0" minWidth="23.0" onKeyTyped="#thisSupplierIdExist" prefHeight="23.0" prefWidth="23.0">
+                                                   <StackPane.margin>
+                                                      <Insets left="80.0" />
+                                                   </StackPane.margin>
+                                                </JFXTextField>
+                                                <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
+                                                   <StackPane.margin>
+                                                      <Insets left="15.0" />
+                                                   </StackPane.margin>
+                                                   <image>
+                                                      <Image url="@../../new_images/icon_4s6xwysiv1f/bianhao.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </StackPane>
+                                          <StackPane prefHeight="21.0" prefWidth="316.0">
+                                             <children>
+                                                <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
+                                                   <StackPane.margin>
+                                                      <Insets left="15.0" />
+                                                   </StackPane.margin>
+                                                   <image>
+                                                      <Image url="@../../new_images/icon_4s6xwysiv1f/model.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label text="进货商名称" StackPane.alignment="CENTER_LEFT">
+                                                   <StackPane.margin>
+                                                      <Insets left="80.0" />
+                                                   </StackPane.margin>
+                                                </Label>
+                                                <JFXTextField fx:id="supplierNameText" maxWidth="100.0" minWidth="32.0" prefHeight="23.0" prefWidth="32.0">
+                                                   <StackPane.margin>
+                                                      <Insets left="80.0" />
+                                                   </StackPane.margin>
+                                                </JFXTextField>
+                                             </children>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </StackPane>
+                                          <StackPane prefHeight="21.0" prefWidth="316.0">
+                                             <children>
+                                                <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
+                                                   <StackPane.margin>
+                                                      <Insets left="15.0" />
+                                                   </StackPane.margin>
+                                                   <image>
+                                                      <Image url="@../../new_images/icon_4s6xwysiv1f/联系方式.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label text="联系方式" StackPane.alignment="CENTER_LEFT">
+                                                   <StackPane.margin>
+                                                      <Insets left="80.0" />
+                                                   </StackPane.margin>
+                                                </Label>
+                                                <JFXTextField fx:id="supplierTelText" maxWidth="100.0" minWidth="32.0" prefHeight="23.0" prefWidth="32.0">
+                                                   <StackPane.margin>
+                                                      <Insets left="80.0" />
+                                                   </StackPane.margin>
+                                                </JFXTextField>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </StackPane>
+                                          <StackPane prefHeight="21.0" prefWidth="316.0">
+                                             <children>
+                                                <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
+                                                   <StackPane.margin>
+                                                      <Insets left="15.0" />
+                                                   </StackPane.margin>
+                                                   <image>
+                                                      <Image url="@../../new_images/icon_4s6xwysiv1f/产地.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label text="地址" StackPane.alignment="CENTER_LEFT">
+                                                   <StackPane.margin>
+                                                      <Insets left="80.0" />
+                                                   </StackPane.margin>
+                                                </Label>
+                                                <JFXTextField fx:id="supplierAddrText" maxWidth="100.0" minWidth="32.0" prefHeight="23.0" prefWidth="32.0">
+                                                   <StackPane.margin>
+                                                      <Insets left="80.0" />
+                                                   </StackPane.margin>
+                                                </JFXTextField>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </StackPane>
+                                          <HBox prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <StackPane prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <JFXButton onMouseClicked="#clearText" prefHeight="46.0" prefWidth="89.0" style="-fx-background-color: #16a951;" text="清除" />
+                                                   </children>
+                                                </StackPane>
+                                                <StackPane prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <JFXButton onMouseClicked="#supplierInsertButton" prefHeight="46.0" prefWidth="89.0" style="-fx-background-color: #16a951;" text="提交" />
+                                                   </children>
+                                                </StackPane>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <JFXDialog fx:id="supplierDialog">
+                           <content>
+                              <JFXDialogLayout>
+                                 <heading>
+                                    <Label style="-fx-text-fill: black" />
+                                 </heading>
+                                 <body>
+                                    <Label fx:id="L_supplierDialog" style="-fx-text-fill: black" />
+                                 </body>
+                                 <actions>
+                                    <JFXButton fx:id="supplierAcceptButton" style="-fx-text-fill: black" styleClass="dialog-accept">Accept</JFXButton>
+                                 </actions>
+                              </JFXDialogLayout>
+                           </content>
+                        </JFXDialog>
+                        <JFXDialog fx:id="supplierDeletedDialog">
+                           <content>
+                              <JFXDialogLayout style="-fx-background-color: #FF5400">
+                                 <heading>
+                                    <Label style="-fx-text-fill: #fff" />
+                                 </heading>
+                                 <body>
+                                    <Label fx:id="L_supplierDeletedDialog" style="-fx-text-fill: #fff" />
+                                 </body>
+                                 <actions>
+                                    <JFXButton fx:id="supplierDeletedAcceptButton" style="-fx-text-fill: #fff" styleClass="dialog-accept">删除</JFXButton>
+                                 </actions>
+                              </JFXDialogLayout>
+                           </content>
+                        </JFXDialog>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </StackPane>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="382.0" prefWidth="1247.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <StackPane fx:id="root" minHeight="373.0" minWidth="324.0" prefHeight="393.0" prefWidth="324.0" style="-fx-background-color: #fff;" styleClass="div_radius" stylesheets="@../../new_css/index.css">
+                     <children>
+                        <VBox prefHeight="393.0" prefWidth="417.0" styleClass="div_radius" stylesheets="@../../new_css/index.css">
+                           <children>
+                              <StackPane minHeight="43.0" prefHeight="47.0" prefWidth="324.0" style="-fx-background-color: #808080;">
+                                 <children>
+                                    <ImageView fitHeight="37.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                                       <image>
+                                          <Image url="@../../new_images/set/密码.png" />
+                                       </image>
+                                       <StackPane.margin>
+                                          <Insets bottom="5.0" left="5.0" top="5.0" />
+                                       </StackPane.margin>
+                                    </ImageView>
+                                    <Label alignment="CENTER" prefHeight="20.0" prefWidth="71.0" text="修改密码" textFill="WHITE" StackPane.alignment="CENTER_LEFT">
+                                       <StackPane.margin>
+                                          <Insets left="40.0" />
+                                       </StackPane.margin>
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <StackPane prefHeight="82.0" prefWidth="129.0">
+                                       <children>
+                                          <Label text="当前账号" StackPane.alignment="CENTER_RIGHT">
+                                             <StackPane.margin>
+                                                <Insets left="10.0" />
+                                             </StackPane.margin>
+                                          </Label>
+                                          <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
+                                             <image>
+                                                <Image url="@../../new_images/login/zhanghao.png" />
+                                             </image>
+                                             <StackPane.margin>
+                                                <Insets left="15.0" />
+                                             </StackPane.margin>
+                                          </ImageView>
+                                       </children>
+                                    </StackPane>
+                                    <StackPane prefHeight="88.0" prefWidth="193.0">
+                                       <HBox.margin>
+                                          <Insets left="15.0" right="20.0" />
+                                       </HBox.margin>
+                                       <children>
+                                          <JFXButton fx:id="accountName" prefHeight="51.0" prefWidth="201.0" styleClass="gradl" stylesheets="@../../new_css/index.css" textFill="WHITE" StackPane.alignment="CENTER_LEFT">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </JFXButton>
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <StackPane prefHeight="88.0" prefWidth="129.0">
+                                       <children>
+                                          <Label text="原密码" StackPane.alignment="CENTER_RIGHT">
+                                             <StackPane.margin>
+                                                <Insets left="15.0" />
+                                             </StackPane.margin>
+                                          </Label>
+                                          <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
+                                             <image>
+                                                <Image url="@../../new_images/login/huaban.png" />
+                                             </image>
+                                             <StackPane.margin>
+                                                <Insets left="15.0" />
+                                             </StackPane.margin>
+                                          </ImageView>
+                                       </children>
+                                    </StackPane>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                       <children>
+                                          <JFXPasswordField fx:id="oldPwd">
+                                             <StackPane.margin>
+                                                <Insets />
+                                             </StackPane.margin>
+                                          </JFXPasswordField>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="15.0" right="20.0" />
+                                       </HBox.margin>
+                                    </StackPane>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <StackPane prefHeight="88.0" prefWidth="129.0">
+                                       <children>
+                                          <Label text="新密码" StackPane.alignment="CENTER_RIGHT">
+                                             <StackPane.margin>
+                                                <Insets left="15.0" />
+                                             </StackPane.margin>
+                                          </Label>
+                                          <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
+                                             <image>
+                                                <Image url="@../../new_images/login/huaban.png" />
+                                             </image>
+                                             <StackPane.margin>
+                                                <Insets left="15.0" />
+                                             </StackPane.margin>
+                                          </ImageView>
+                                       </children>
+                                    </StackPane>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                       <children>
+                                          <JFXPasswordField fx:id="newPwd">
+                                             <StackPane.margin>
+                                                <Insets />
+                                             </StackPane.margin>
+                                          </JFXPasswordField>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="15.0" right="20.0" />
+                                       </HBox.margin>
+                                    </StackPane>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <StackPane prefHeight="100.0" prefWidth="324.0">
+                                       <children>
+                                          <JFXButton onMouseClicked="#updatePwd" prefHeight="39.0" prefWidth="81.0" style="-fx-background-color: #16a951;" text="确认" />
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <JFXDialog fx:id="dialog">
+                           <content>
+                              <JFXDialogLayout>
+                                 <heading>
+                                    <Label style="-fx-text-fill: black" />
+                                 </heading>
+                                 <body>
+                                    <Label fx:id="L_Dialog" style="-fx-text-fill: black" />
+                                 </body>
+                                 <actions>
+                                    <JFXButton fx:id="acceptButton" style="-fx-text-fill: black" styleClass="dialog-accept" />
+                                 </actions>
+                              </JFXDialogLayout>
+                           </content>
+                        </JFXDialog>
+                     </children>
+                  </StackPane>
+                  <StackPane prefHeight="373.0" prefWidth="448.0" />
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <VBox.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </VBox.margin>
+      </VBox>
+      <StackPane prefHeight="22.0" prefWidth="1317.0">
+         <children>
+            <Label prefHeight="15.0" prefWidth="135.0" text="Design comes from">
+               <StackPane.margin>
+                  <Insets right="200.0" />
+               </StackPane.margin>
+            </Label>
+            <Label prefHeight="15.0" prefWidth="71.0" text="\@第九组">
+               <StackPane.margin>
+                  <Insets left="50.0" />
+               </StackPane.margin>
+            </Label>
+         </children>
+      </StackPane>
+    </children>
+</VBox>

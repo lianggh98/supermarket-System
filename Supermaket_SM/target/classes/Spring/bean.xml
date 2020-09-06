@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+    <!--使用cglib代理方式，配置文件-->
+    <aop:config proxy-target-class="true"/>
+
+<!--    <bean id="mysqlAutoClose" class="util.mysqlAutoClose"></bean>-->
+
+    <bean id="BaseHolder" class="com.spring.BaseHolder" lazy-init="false" />
+    <bean id="ViewAssistImpl" class="view.util.ViewAssistImpl" lazy-init="false" />
+
+    <!--注解扫描配置-->
+    <context:component-scan base-package="com.service.Impl"></context:component-scan>
+    <context:component-scan base-package="com.service"></context:component-scan>
+    <context:component-scan base-package="view.util"></context:component-scan>
+    <!-- 配置spring开启注解AOP的支持 -->
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+    <context:component-scan base-package="com.aspect"></context:component-scan>
+
+
+<!--    加载其他的.xml文件-->
+
+<!--    加载Spring Mybatis整合-->
+    <import resource="spring_mybatis.xml"/>
+
+</beans>

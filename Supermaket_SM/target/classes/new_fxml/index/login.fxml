@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDialog?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+
+<?import com.jfoenix.controls.JFXDialogLayout?>
+<?import javafx.scene.control.Label?>
+<StackPane  fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" styleClass="gradl" stylesheets="@../../new_css/index.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.new_conotroller.index.loginController">
+   <children>
+      <ImageView fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
+         <StackPane.margin>
+            <Insets top="100.0" />
+         </StackPane.margin>
+         <image>
+            <Image url="@../../new_images/shop_car.png" />
+         </image>
+      </ImageView>
+      <HBox maxHeight="50.0" maxWidth="300.0" minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="125.0" style="-fx-border-radius: 5;">
+         <StackPane.margin>
+            <Insets top="30.0" />
+         </StackPane.margin>
+         <children>
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
+               </HBox.margin>
+               <image>
+                  <Image url="@../../new_images/login/zhanghao.png" />
+               </image>
+            </ImageView>
+            <JFXTextField fx:id="user" focusColor="WHITE" prefHeight="40.0" prefWidth="220.0" unFocusColor="WHITE">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </JFXTextField>
+         </children>
+      </HBox>
+      <HBox maxHeight="50.0" maxWidth="300.0" minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="125.0" style="-fx-border-radius: 5;">
+         <StackPane.margin>
+            <Insets top="170.0" />
+         </StackPane.margin>
+         <children>
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
+               </HBox.margin>
+               <image>
+                  <Image url="@../../new_images/login/huaban.png" />
+               </image>
+            </ImageView>
+            <JFXPasswordField fx:id="password" focusColor="WHITE" prefHeight="40.0" prefWidth="220.0" unFocusColor="WHITE">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </JFXPasswordField>
+         </children>
+      </HBox>
+      <JFXDialog fx:id="dialog">
+         <content>
+            <JFXDialogLayout style="-fx-background-color: #FF5400">
+               <heading>
+                  <Label style="-fx-text-fill: #fff">警告</Label>
+               </heading>
+               <body>
+                  <Label fx:id="L_Dialog" style="-fx-text-fill: #fff">
+                     輸入框內不能為空
+                  </Label>
+               </body>
+               <actions>
+                  <JFXButton fx:id="acceptButton" style="-fx-text-fill: #fff" styleClass="dialog-accept">ACCEPT
+                  </JFXButton>
+               </actions>
+            </JFXDialogLayout>
+         </content>
+      </JFXDialog>
+      <JFXButton fx:id="B_close" onMouseClicked="#close_Login" prefHeight="28.0" prefWidth="35.0" text="×" textFill="WHITE" StackPane.alignment="TOP_RIGHT" />
+      <JFXButton onMouseClicked="#login" prefHeight="39.0" prefWidth="119.0" style="-fx-border-color: #8c8c8c; -fx-border-radius: 2;" text="登录" textFill="WHITE">
+         <StackPane.margin>
+            <Insets top="280.0" />
+         </StackPane.margin>
+      </JFXButton>
+   </children>
+</StackPane>

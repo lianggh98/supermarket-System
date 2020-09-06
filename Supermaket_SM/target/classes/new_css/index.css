@@ -1,0 +1,64 @@
+.div_radius{
+    -fx-background-radius: 2px;
+}
+
+.gradl{
+
+
+    -fx-background: #283c86;  /* fallback for old browsers */
+
+    -fx-background-color: linear-gradient(to bottom, rgb(40, 60, 134), rgb(69, 162, 71)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+}
+.image{
+    -fx-background-image: url("new_images/login/login.png");
+}
+
+/*颜色渐变*/
+
+
+/*.table-view .table-row-cell {*/
+
+/*    -fx-background-insets: 0;*/
+
+/*}*/
+/*.table-view .table-row-cell .table-cell {*/
+
+/*    -fx-border-width: 0px;*/
+
+/*}*/
+
+/*!*设置表格头靠左、字体大小，字体颜色*!*/
+/*.table-view .column-header .label{*/
+/*    -fx-alignment: center-left;*/
+/*    -fx-font-family: "Arial";*/
+/*    -fx-font-size: 15;*/
+/*}*/
+
+/*!***/
+/* * 表头背景颜色变化*/
+/* *!*/
+/*.table-column .label{*/
+/*    -fx-background-color: #5f93e7;*/
+/*    -fx-text-fill: white ;*/
+/*    -fx-text-alignment: center ;*/
+/*    -fx-graphic-text-gap:0;*/
+
+
+/*!***!*/
+/*!**表格边框颜色*!*/
+/*!**!*/
+/*.table-view *.column-header-background { */
+/*    -fx-background-color: #5f93e7;*/
+/*    -fx-background-insets: 0px, 0px;*/
+/*}*/
+
+/*}*/
+/*.table-view:row-selection .column-header-background .filler{*/
+/*    visibility: false;*/
+/*    -fx-background-color: #5f93e7;*/
+/*}*/
+
+
+

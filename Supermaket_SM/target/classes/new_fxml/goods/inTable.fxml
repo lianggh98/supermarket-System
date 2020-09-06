@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXDialog?>
+<?import com.jfoenix.controls.JFXDialogLayout?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="root" maxHeight="350.0" maxWidth="420.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.new_conotroller.buy.Controller_buy_update_insert">
+    <children>
+        <VBox fx:id="Vbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="420.0" style="-fx-border-radius: 3;" styleClass="div_radius" stylesheets="@../../new_css/index.css">
+            <children>
+                <HBox prefHeight="52.0" prefWidth="450.0" style="-fx-background-color: #282828;">
+                    <children>
+                        <Label fx:id="L_model" prefHeight="93.0" prefWidth="252.0" text="入库" textFill="WHITE">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="15.0" />
+                            </HBox.margin>
+                        </Label>
+                        <StackPane prefHeight="51.0" prefWidth="361.0" />
+                    </children>
+                </HBox>
+                <HBox prefHeight="570.0" prefWidth="960.0" style="-fx-border-color: black; -fx-border-width: 2;">
+                    <children>
+                        <VBox prefHeight="302.0" prefWidth="426.0">
+                            <children>
+                                <HBox prefHeight="85.0" prefWidth="436.0">
+                                    <children>
+                                        <HBox prefHeight="85.0" prefWidth="110.0">
+                                            <children>
+                                                <StackPane prefHeight="85.0" prefWidth="92.0">
+                                                    <children>
+                                                        <Label text="操作员编号">
+                                                            <font>
+                                                                <Font size="18.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <ImageView fitHeight="52.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@../../new_images/icon_4s6xwysiv1f/bianhao.png" />
+                                                            </image>
+                                                            <StackPane.margin>
+                                                                <Insets right="130.0" />
+                                                            </StackPane.margin>
+                                                        </ImageView>
+                                                    </children>
+                                                </StackPane>
+                                            </children>
+                                        </HBox>
+                                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                                            <children>
+                                                <JFXTextField fx:id="inPersonId">
+                                                    <StackPane.margin>
+                                                        <Insets />
+                                                    </StackPane.margin>
+                                                </JFXTextField>
+                                            </children>
+                                            <HBox.margin>
+                                                <Insets left="10.0" />
+                                            </HBox.margin>
+                                        </StackPane>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets left="5.0" />
+                                    </VBox.margin>
+                                </HBox>
+                                <HBox prefHeight="85.0" prefWidth="436.0">
+                                    <children>
+                                        <HBox prefHeight="85.0" prefWidth="110.0">
+                                            <children>
+                                                <StackPane prefHeight="85.0" prefWidth="92.0">
+                                                    <children>
+                                                        <Label text="采购员名称">
+                                                            <font>
+                                                                <Font size="18.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <ImageView fitHeight="52.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@../../new_images/icon_4s6xwysiv1f/bianhao.png" />
+                                                            </image>
+                                                            <StackPane.margin>
+                                                                <Insets right="130.0" />
+                                                            </StackPane.margin>
+                                                        </ImageView>
+                                                    </children>
+                                                </StackPane>
+                                            </children>
+                                        </HBox>
+                                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                                            <children>
+                                                <JFXTextField fx:id="inPersonName" onKeyTyped="#get_Ginfo">
+                                                    <StackPane.margin>
+                                                        <Insets />
+                                                    </StackPane.margin>
+                                                </JFXTextField>
+                                            </children>
+                                            <HBox.margin>
+                                                <Insets left="10.0" />
+                                            </HBox.margin>
+                                        </StackPane>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets left="5.0" />
+                                    </VBox.margin>
+                                </HBox>
+                                <HBox prefHeight="85.0" prefWidth="436.0">
+                                    <children>
+                                        <HBox prefHeight="85.0" prefWidth="110.0">
+                                            <children>
+                                                <StackPane prefHeight="85.0" prefWidth="92.0">
+                                                    <children>
+                                                        <Label text="入库日期">
+                                                            <font>
+                                                                <Font size="18.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <ImageView fitHeight="52.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                                            <StackPane.margin>
+                                                                <Insets right="130.0" />
+                                                            </StackPane.margin>
+                                                            <image>
+                                                                <Image url="@../../new_images/icon_4s6xwysiv1f/riqi.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </StackPane>
+                                            </children>
+                                        </HBox>
+                                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                                            <HBox.margin>
+                                                <Insets left="10.0" />
+                                            </HBox.margin>
+                                            <children>
+                                                <VBox prefHeight="72.0" prefWidth="209.0">
+                                                    <children>
+                                                        <JFXDatePicker fx:id="inTableDate">
+                                                            <VBox.margin>
+                                                                <Insets />
+                                                            </VBox.margin>
+                                                        </JFXDatePicker>
+                                                        <JFXTimePicker fx:id="inTableTime" />
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </StackPane>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets left="5.0" />
+                                    </VBox.margin>
+                                </HBox>
+                            </children>
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </VBox>
+                    </children>
+                </HBox>
+                <HBox prefHeight="0.0" prefWidth="437.0" style="-fx-background-color: #282828;">
+                    <children>
+                        <StackPane prefHeight="92.0" prefWidth="539.0">
+                            <children>
+                                <JFXButton fx:id="B_close" onMouseClicked="#B_closeMaster" prefHeight="44.0" prefWidth="102.0" style="-fx-background-color: #b8b1b1;" text="关闭" textFill="WHITE">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                           <StackPane.margin>
+                              <Insets right="200.0" />
+                           </StackPane.margin>
+                                </JFXButton>
+                                <JFXButton onMouseClicked="#B_update" prefHeight="44.0" prefWidth="102.0" style="-fx-background-color: green;" text="提交" textFill="WHITE">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                    <StackPane.margin>
+                                        <Insets left="200.0" />
+                                    </StackPane.margin>
+                                </JFXButton>
+                            </children>
+                        </StackPane>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+        <JFXDialog fx:id="dialog">
+            <content>
+                <JFXDialogLayout style="-fx-background-color: #FF5400">
+                    <heading>
+                        <Label style="-fx-text-fill: #fff">警告</Label>
+                    </heading>
+                    <body>
+                        <Label fx:id="L_Dialog" style="-fx-text-fill: #fff">
+                            輸入框內不能為空
+                        </Label>
+                    </body>
+                    <actions>
+                        <JFXButton fx:id="acceptButton" style="-fx-text-fill: #fff" styleClass="dialog-accept">ACCEPT
+                        </JFXButton>
+                    </actions>
+                </JFXDialogLayout>
+            </content>
+        </JFXDialog>
+    </children>
+</StackPane>
