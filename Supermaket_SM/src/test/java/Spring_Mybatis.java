@@ -1,13 +1,7 @@
-import com.Bean.Inventory.Warehouse;
-import com.dao.accountMapper;
-import com.dao.setMapper;
-import com.spring.BaseHolder;
+import com.dao.AccountMapper;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.text.SimpleDateFormat;
-import java.util.*;
 
 /**
  * @ClassName
@@ -22,14 +16,9 @@ public class Spring_Mybatis {
     public void test(){
 
 //
-            ApplicationContext ac  =  new ClassPathXmlApplicationContext("/Spring/bean.xml");
-            setMapper mapper = BaseHolder.getApplicationContext().getBean("setMapper",setMapper.class);
-        Warehouse w = new Warehouse();
-        w.setWid(1);
-        w.setWname("仓库1");
-
-        System.out.println(mapper.updateWarehouse(w));
-
+            ApplicationContext ac  =  new ClassPathXmlApplicationContext("/Spring/spring_mybatis.xml");
+            AccountMapper mapper =ac.getBean("accountMapper", AccountMapper.class);
+             System.out.println(mapper.CountTodayLoginRecordAll());
 
     }
 }

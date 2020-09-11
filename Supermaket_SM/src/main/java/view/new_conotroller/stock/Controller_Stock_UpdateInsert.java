@@ -1,8 +1,8 @@
 package view.new_conotroller.stock;
 
-import com.BeanVo.StockVo;
+import com.beanvo.StockVo;
 import com.jfoenix.controls.*;
-import com.service.Impl.stockServiceImpl;
+import com.service.impl.StockServiceImpl;
 import com.spring.BaseHolder;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -48,10 +48,10 @@ public class Controller_Stock_UpdateInsert extends ViewAssistImpl implements Ini
     @FXML
     JFXTimePicker producedTime;
 
-    private stockServiceImpl stockService;
+    private StockServiceImpl stockService;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        stockService = BaseHolder.getApplicationContext().getBean("stockService", stockServiceImpl.class);
+        stockService = BaseHolder.getApplicationContext().getBean("stockService", StockServiceImpl.class);
 
         stockid.setText(stockVo.getStockid().toString());
         inid.setText(stockVo.getInid().toString());
@@ -84,11 +84,11 @@ public class Controller_Stock_UpdateInsert extends ViewAssistImpl implements Ini
 
         List<String> list = super.TextisNull(stockid,inid,quantity,wid,gid,expiration);
         Timestamp timestamp = super.getTime(producedDate,producedTime);
-        stockService.updateStock(list,timestamp);
+        stockService.upDateStock(list,timestamp);
         Platform.runLater(()->{
             super.setMessageType(Manage.getController_stock().P_stock_Error,Manage.getController_stock().L_stock_Error,"message");
             Manage.getController_stock().L_stock_Error.setText("数据修改成功");
-            stockService.show_JFXTreeTableColumn();
+            stockService.showJFXTreeTableColumn();
             B_closeMaster();
         });
     }

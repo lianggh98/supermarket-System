@@ -1,10 +1,10 @@
 package view.new_conotroller.buy;
 
-import com.BeanVo.*;
+import com.beanvo.*;
 import com.jfoenix.controls.*;
 
-import com.service.Impl.buyServiceImpl;
-import com.service.Impl.inTableServiceImpl;
+import com.service.impl.BuyServiceImpl;
+import com.service.impl.InTableServiceImpl;
 import com.spring.BaseHolder;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
@@ -68,8 +68,8 @@ public class Controller_buy extends ViewAssistImpl implements Initializable {
     public Label L_buy_Error,L_inTable_Error;
 
 
-    private buyServiceImpl buyService;
-    private inTableServiceImpl inTableSerivce;
+    private BuyServiceImpl buyService;
+    private InTableServiceImpl inTableSerivce;
 
     // editable table view
     @Override
@@ -78,20 +78,20 @@ public class Controller_buy extends ViewAssistImpl implements Initializable {
         P_buy_Error.setVisible(false);
         P_inTable_Error.setVisible(false);
 
-        buyService = BaseHolder.getApplicationContext().getBean("buyService", buyServiceImpl.class);
-        buyService.set_BuyJFXTreeTableColumn(buy_selected,buy_stockid ,buy_supid, buy_perid, buy_gid ,
+        buyService = BaseHolder.getApplicationContext().getBean("buyService", BuyServiceImpl.class);
+        buyService.setBuyJFXTreeTableColumn(buy_selected,buy_stockid ,buy_supid, buy_perid, buy_gid ,
                                                 buy_gname ,buy_model, buy_number, buy_pname, buy_cometime ,
                                                 buy_mtime ,buy_price, buy_prices ,buy_set,buy_update,buy_expiration);
 
         buyService.show_BuyJFXTreeTableColumn();
         buySearchField.textProperty().addListener(BuysetupSearchField(buyTreeTableView));
 
-        inTableSerivce = BaseHolder.getApplicationContext().getBean("inTableService", inTableServiceImpl.class);
-        inTableSerivce.set_inTableJFXTreeTableColumn(in_selected,in_inid,in_gid,in_inperid,in_buy,
+        inTableSerivce = BaseHolder.getApplicationContext().getBean("inTableService", InTableServiceImpl.class);
+        inTableSerivce.setInTableJFXTreeTableColumn(in_selected,in_inid,in_gid,in_inperid,in_buy,
                                                      in_quantity,in_cometime,in_stockroom,in_cometime,
                                                     in_pname,in_gname);
 
-        inTableSerivce.show_inTableJFXTreeTableColumn();
+        inTableSerivce.showInTableJFXTreeTableColumn();
         inTableSearchField.textProperty().addListener(inTablesetupSearchField(inTableTreeTableView));
 
     }
@@ -119,13 +119,13 @@ public class Controller_buy extends ViewAssistImpl implements Initializable {
             super.setMessageType(P_inTable_Error,L_inTable_Error,"message");
             L_inTable_Error.setText("已成功删除选中的对象");
             buyService.show_BuyJFXTreeTableColumn();
-            inTableSerivce.show_inTableJFXTreeTableColumn();
+            inTableSerivce.showInTableJFXTreeTableColumn();
             Manage.getController().buyModelRStart();
         }
     }
     @FXML
     public void B_Buyselected() {
-        if( buyService.Buyselected()==0){
+        if( buyService.buySelected()==0){
             super.setMessageType(P_buy_Error,L_buy_Error,"error");
 //            设置错误的提示
             L_buy_Error.setText("请至少选中一个需要删除的的对象");
@@ -144,7 +144,7 @@ public class Controller_buy extends ViewAssistImpl implements Initializable {
     public void B_inTableRefresh(){
         System.out.println("入库管理新按钮按下");
         inTableTreeTableView.setRoot(null);
-        inTableSerivce.show_inTableJFXTreeTableColumn();
+        inTableSerivce.showInTableJFXTreeTableColumn();
     }
     @FXML//刷新按钮
     public void B_buyRefresh(){

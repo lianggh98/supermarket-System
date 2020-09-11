@@ -2,14 +2,14 @@ package view.new_conotroller.index;
 
 
 
-import com.Bean.Account.loginRecordCount;
-import com.dao.accountMapper;
-import com.dao.buyMapper;
+import com.bean.account.loginRecordCount;
+import com.dao.AccountMapper;
+import com.dao.BuyMapper;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXListView;
-import com.service.Impl.buyServiceImpl;
-import com.service.Impl.accountServiceImpl;
+import com.service.impl.BuyServiceImpl;
+import com.service.impl.AccountServiceImpl;
 import com.spring.BaseHolder;
 import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
@@ -256,13 +256,13 @@ public class indexController extends ViewAssistImpl implements Initializable {
     * @Date: 2020/7/20s
     */
     public void loginRecordModelRStart(){
-        accountServiceImpl accountService = BaseHolder.getApplicationContext().getBean("accountService",accountServiceImpl.class);
+        AccountServiceImpl accountService = BaseHolder.getApplicationContext().getBean("accountService", AccountServiceImpl.class);
         /**从数据库开始读写当日的登录记录**/
-        Integer todayLogin = accountService.get_LoginRecord(contentList);
+        Integer todayLogin = accountService.getLoginRecord(contentList);
         /**从数据库开始读写当日的登录记录**/
         L_loginrecord.setText(todayLogin.toString()+" 次");
 
-        accountMapper mapper = BaseHolder.getApplicationContext().getBean("accountMapper",accountMapper.class);
+        AccountMapper mapper = BaseHolder.getApplicationContext().getBean("accountMapper", AccountMapper.class);
         List<Integer> loginRecord = new ArrayList<>();
         for(loginRecordCount l : mapper.CountTodayLoginRecordAll()){
             loginRecord.add(l.getLcount());
@@ -280,9 +280,9 @@ public class indexController extends ViewAssistImpl implements Initializable {
     * @Date: 2020/7/20
     */
     public void buyModelRStart(){
-        buyServiceImpl buyService = BaseHolder.getApplicationContext().getBean("buyService", buyServiceImpl.class);
-        buyMapper mapper = BaseHolder.getApplicationContext().getBean("buyMapper", com.dao.buyMapper.class);
-        List<Integer> list =   buyService.get_EveryDayBuyRecord(super.get_Moday_Sunday());
+        BuyServiceImpl buyService = BaseHolder.getApplicationContext().getBean("buyService", BuyServiceImpl.class);
+        BuyMapper mapper = BaseHolder.getApplicationContext().getBean("buyMapper", BuyMapper.class);
+        List<Integer> list =   buyService.getEveryDayBuyRecord(super.get_Moday_Sunday());
         /**通过json发送给HTml页面**/
         try {
             buyWin.eval("getbuyDateByJava("+list+")");
@@ -304,7 +304,7 @@ public class indexController extends ViewAssistImpl implements Initializable {
 
         /**写入待入库**/
         L_waitIntable.setText("");
-        Integer notDate = mapper.findinTbaleNoDate().size();
+        Integer notDate = mapper.findingTaleNoDate().size();
         if(notDate!=null)
             L_waitIntable.setText(notDate.toString());
 

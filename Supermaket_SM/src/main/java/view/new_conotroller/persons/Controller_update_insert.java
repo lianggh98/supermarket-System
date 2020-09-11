@@ -1,9 +1,9 @@
 package view.new_conotroller.persons;
 
-import com.BeanVo.PersonsVo;
-import com.dao.personsMapper;
+import com.beanvo.PersonsVo;
+import com.dao.PersonsMapper;
 import com.jfoenix.controls.*;
-import com.service.Impl.personsServiceImpl;
+import com.service.impl.PersonsServiceImpl;
 import com.spring.BaseHolder;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -57,11 +57,11 @@ public class Controller_update_insert extends ViewAssistImpl implements Initiali
     JFXTimePicker inTime,outTime;
     @FXML
     JFXDatePicker inDate,outDate;
-    private personsServiceImpl service;
+    private PersonsServiceImpl service;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if(service==null)
-            service = BaseHolder.getApplicationContext().getBean("personsService", personsServiceImpl.class);
+            service = BaseHolder.getApplicationContext().getBean("personsService", PersonsServiceImpl.class);
 //        清除dialog顯示
         root.getChildren().remove(dialog);
 //        绑定dilog按鈕
@@ -154,7 +154,7 @@ public class Controller_update_insert extends ViewAssistImpl implements Initiali
 
 
 //        刷新界面
-        service.show_JFXTreeTableColumn();
+        service.showJFXTreeTableColumn();
         super.setMessageType(Manage.getController_persons().P_Error,Manage.getController_persons().L_Error,"message");
         B_closeMaster();
     }
@@ -166,7 +166,7 @@ public class Controller_update_insert extends ViewAssistImpl implements Initiali
     @FXML
     public void existPersonsId(){
         if(super.isnumber(pid.getText())){
-            personsMapper mapper = BaseHolder.getApplicationContext().getBean("personsMapper",personsMapper.class);
+            PersonsMapper mapper = BaseHolder.getApplicationContext().getBean("personsMapper", PersonsMapper.class);
             if(mapper.findPersonsByIds(Integer.valueOf(pid.getText()))!=null){
                 show_Dialog("当前id已经存在,请重新输入");
             }

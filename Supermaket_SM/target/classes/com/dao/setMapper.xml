@@ -15,8 +15,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- warehouse -->
-<mapper namespace="com.dao.setMapper">
-    <select id="findWareHouseAll" resultType="com.Bean.Inventory.Warehouse">
+<mapper namespace="com.dao.SetMapper">
+    <select id="findWareHouseAll" resultType="com.bean.inventory.Warehouse">
         SELECT * FROM `warehouse`
     </select>
 
@@ -59,7 +59,7 @@
     </insert>
 
     <!-- 根据主键查询数据 -->
-    <select id="findWarehouseById" resultType="com.Bean.Inventory.Warehouse"  parameterType="java.lang.Integer">
+    <select id="findWarehouseById" resultType="com.bean.inventory.Warehouse" parameterType="java.lang.Integer">
         SELECT
         warehouse.wid
         FROM warehouse WHERE wid = #{wid}
@@ -100,7 +100,7 @@
     </insert>
 
     <!-- 根据主键查询 Bclass 数据 -->
-    <select id="findBclassByIds" resultType="com.Bean.Goods.Bclass" parameterType="java.lang.Integer">
+    <select id="findBclassByIds" resultType="com.bean.goods.Bclass" parameterType="java.lang.Integer">
         SELECT *
         FROM bclass WHERE bid = #{bid}
     </select>
@@ -112,7 +112,7 @@
 
 
 <!--    查找SupplierVo全部信息-->
-    <select id="findSupplierAll" resultType="com.BeanVo.SupplierVo">
+    <select id="findSupplierAll" resultType="com.beanvo.SupplierVo">
         SELECT supplier.*
         FROM supplier;
     </select>

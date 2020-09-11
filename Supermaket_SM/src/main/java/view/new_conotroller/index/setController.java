@@ -1,13 +1,12 @@
 package view.new_conotroller.index;
 
-import com.Bean.Buy.Supplier;
-import com.Bean.Goods.Bclass;
-import com.Bean.Inventory.Warehouse;
-import com.BeanVo.SupplierVo;
-import com.dao.goodsMapper;
-import com.dao.setMapper;
+import com.bean.goods.Bclass;
+import com.bean.inventory.Warehouse;
+import com.beanvo.SupplierVo;
+import com.dao.GoodsMapper;
+import com.dao.SetMapper;
 import com.jfoenix.controls.*;
-import com.service.Impl.setViewServiceImpl;
+import com.service.impl.SetViewServiceImpl;
 import com.spring.BaseHolder;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,17 +15,9 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.Menu;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.util.Callback;
 import view.util.Manage;
 import view.util.ViewAssistImpl;
 
@@ -112,7 +103,7 @@ public class setController extends ViewAssistImpl implements Initializable {
                         Wname.setText(WnametexeField.getText());
 
                         hBox.getChildren().remove(0,2);
-                        com.dao.setMapper setMapper = BaseHolder.getApplicationContext().getBean("setMapper", com.dao.setMapper.class);
+                        SetMapper setMapper = BaseHolder.getApplicationContext().getBean("setMapper", SetMapper.class);
                         Warehouse w = new Warehouse();
 
 
@@ -212,7 +203,7 @@ public class setController extends ViewAssistImpl implements Initializable {
                         bName.setText(bNameTextField.getText());
 
                         hBox.getChildren().remove(0,2);
-                        com.dao.setMapper setMapper = BaseHolder.getApplicationContext().getBean("setMapper", com.dao.setMapper.class);
+                        SetMapper setMapper = BaseHolder.getApplicationContext().getBean("setMapper", SetMapper.class);
                         Bclass b  = new Bclass();
                         b.setBid(old);
                         b.setNewid(Integer.valueOf(bIdTextField.getText()));
@@ -260,7 +251,7 @@ public class setController extends ViewAssistImpl implements Initializable {
     }
     /**显示商品分类ListView**/
     public void showBClassListView(JFXListView listView){
-        goodsMapper goodsMapper = BaseHolder.getApplicationContext().getBean("goodsMapper", com.dao.goodsMapper.class);
+        GoodsMapper goodsMapper = BaseHolder.getApplicationContext().getBean("goodsMapper", GoodsMapper.class);
         bClassListView.getItems().clear();
         List<bClassHboxCell> list = new ArrayList<>();
         for(Bclass b:goodsMapper.findBClassAll())
@@ -483,8 +474,8 @@ public class setController extends ViewAssistImpl implements Initializable {
 
 
 
-    private setMapper setMapper;
-    private setViewServiceImpl setViewService;
+    private SetMapper setMapper;
+    private SetViewServiceImpl setViewService;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Manage.setSetController(this);
@@ -496,13 +487,13 @@ public class setController extends ViewAssistImpl implements Initializable {
         supplierAcceptButton.setOnAction(action -> supplierDialog.close());
 
         /****/
-        setMapper = BaseHolder.getApplicationContext().getBean("setMapper",com.dao.setMapper.class);
-        setViewService =  BaseHolder.getApplicationContext().getBean("setViewService",setViewServiceImpl.class);
+        setMapper = BaseHolder.getApplicationContext().getBean("setMapper", SetMapper.class);
+        setViewService =  BaseHolder.getApplicationContext().getBean("setViewService", SetViewServiceImpl.class);
 
         showWarehouseListView(listView);
         showBClassListView(bClassListView);
         /**初始化Supplier的TreeTableView**/
-        setViewService.set_SupplierTreeTableView();
+        setViewService.setSupplierTreeTableView();
         setViewService.show_SupplierJFXTreeTableColumn();
 
 

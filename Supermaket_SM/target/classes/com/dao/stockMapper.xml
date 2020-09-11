@@ -15,11 +15,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- stock -->
-<mapper namespace="com.dao.stockMapper">
+<mapper namespace="com.dao.StockMapper">
 
     
     <!-- 查询所有数据 -->
-    <select id="findStockVoAll" resultType="com.BeanVo.StockVo">
+    <select id="findStockVoAll" resultType="com.beanvo.StockVo">
         SELECT stock.* ,goods.gname,wname,buy.expiration
         FROM stock
 				LEFT JOIN goods ON goods.id  = stock.gid
@@ -30,7 +30,7 @@
     </select>
 
     <!-- 查询库存下是否存在此商品id -->
-    <select id="findStockByGid" resultType="com.Bean.Inventory.Stock" parameterType="java.lang.Integer">
+    <select id="findStockByGid" resultType="com.bean.inventory.Stock" parameterType="java.lang.Integer">
         SELECT stock.gid,stock.stockid
         FROM stock
         WHERE stock.gid = #{gid};
@@ -65,7 +65,7 @@
 
 
     <!-- 修改数据 -->
-    <update id="updateStock" parameterType="com.Bean.Inventory.Stock">
+    <update id="updateStock" parameterType="com.bean.inventory.Stock">
         UPDATE stock
         <set>
             <if test="inid != null">
@@ -93,7 +93,7 @@
 
 <!--   根据主键查找仓库-->
     <!-- 根据主键查询数据 -->
-    <select id="findWarehouseById" resultType="com.Bean.Inventory.Warehouse" parameterType="java.lang.Integer">
+    <select id="findWarehouseById" resultType="com.bean.inventory.Warehouse" parameterType="java.lang.Integer">
         SELECT
         warehouse.*
         FROM warehouse WHERE wid  = #{wid};

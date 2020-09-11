@@ -4,6 +4,9 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
+/**
+ * @author liamg
+ */
 public class BaseHolder  implements ApplicationContextAware {
 
     private static ApplicationContext applicationContext;

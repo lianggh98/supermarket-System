@@ -1,10 +1,10 @@
 package view.new_conotroller.buy;
 
-import com.BeanVo.BuyVo;
+import com.beanvo.BuyVo;
 import com.jfoenix.controls.*;
-import com.service.Impl.buyServiceImpl;
-import com.service.Impl.inTableServiceImpl;
-import com.service.Impl.stockServiceImpl;
+import com.service.impl.BuyServiceImpl;
+import com.service.impl.InTableServiceImpl;
+import com.service.impl.StockServiceImpl;
 import com.spring.BaseHolder;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -46,13 +46,13 @@ public class Controller_inTable  extends ViewAssistImpl implements Initializable
     JFXDatePicker inTableDate;
     @FXML
     JFXTimePicker inTableTime;
-    private buyServiceImpl service;
-    private inTableServiceImpl inTableSerivce;
+    private BuyServiceImpl service;
+    private InTableServiceImpl inTableSerivce;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         acceptButton.setOnAction(action -> dialog.close());
-        service = BaseHolder.getApplicationContext().getBean("buyService", buyServiceImpl.class);
-        inTableSerivce = BaseHolder.getApplicationContext().getBean("inTableService", inTableServiceImpl.class);
+        service = BaseHolder.getApplicationContext().getBean("buyService", BuyServiceImpl.class);
+        inTableSerivce = BaseHolder.getApplicationContext().getBean("inTableService", InTableServiceImpl.class);
     }
     @FXML
     public void B_update(){
@@ -86,7 +86,7 @@ public class Controller_inTable  extends ViewAssistImpl implements Initializable
             stockList.add(buyVo.getGid().toString());
             stockList.add(buyVo.getProduced().toString());
             stockList.add(buyVo.getExpiration());
-            stockServiceImpl stockService = BaseHolder.getApplicationContext().getBean("stockService", stockServiceImpl.class);
+            StockServiceImpl stockService = BaseHolder.getApplicationContext().getBean("stockService", StockServiceImpl.class);
             stockService.stockInsert(stockList);
             System.out.println("执行了");
         }).start();
@@ -100,7 +100,7 @@ public class Controller_inTable  extends ViewAssistImpl implements Initializable
             Manage.getController_buy(). L_buy_Error.setText("入库成功!!!");
             /**刷新界面**/
             service.show_BuyJFXTreeTableColumn();
-            inTableSerivce.show_inTableJFXTreeTableColumn();
+            inTableSerivce.showInTableJFXTreeTableColumn();
             Manage.getController().buyModelRStart();
         });
     }

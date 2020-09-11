@@ -1,9 +1,9 @@
 package view.new_conotroller.buy;
 
-import com.BeanVo.BuyVo;
-import com.dao.buyMapper;
+import com.beanvo.BuyVo;
+import com.dao.BuyMapper;
 import com.jfoenix.controls.*;
-import com.service.Impl.buyServiceImpl;
+import com.service.impl.BuyServiceImpl;
 import com.spring.BaseHolder;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -76,7 +76,7 @@ public class Controller_buy_update_insert extends ViewAssistImpl implements Init
     JFXTimePicker inTime,producedTime;
     @FXML
     JFXDatePicker inDate,producedDate;
-    private buyServiceImpl buyService;
+    private BuyServiceImpl buyService;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 //        清除dialog顯示
@@ -114,7 +114,7 @@ public class Controller_buy_update_insert extends ViewAssistImpl implements Init
 //             保质期
         }
         if(buyService==null)
-            buyService = BaseHolder.getApplicationContext().getBean("buyService", buyServiceImpl.class);
+            buyService = BaseHolder.getApplicationContext().getBean("buyService", BuyServiceImpl.class);
     }
     @FXML/**Dialog关闭事件**/
     public void B_closeMaster(){
@@ -140,14 +140,14 @@ public class Controller_buy_update_insert extends ViewAssistImpl implements Init
 //          向服务层开始提交数据
                 switch (temp){
                     case 0:
-                        buyService.update_inser("insert",super.TextisNull(inid,gid,model,number,price,prices,supplier,pid,expiration),inTimeStamp,producedDateTimeStamp);
+                        buyService.upDateInsert("insert",super.TextisNull(inid,gid,model,number,price,prices,supplier,pid,expiration),inTimeStamp,producedDateTimeStamp);
                         super.setMessageType( Manage.getController_buy().P_buy_Error,  Manage.getController_buy().L_buy_Error, "message");
                         Manage.getController_buy().L_buy_Error.setText("已经成功添加对象");
                         clear_InsertTemp();
                         B_closeMaster();
                         break;
                     case 1:
-                        buyService.update_inser("update",super.TextisNull(inid,gid,model,number,price,prices,supplier,pid,expiration),inTimeStamp,producedDateTimeStamp);
+                        buyService.upDateInsert("update",super.TextisNull(inid,gid,model,number,price,prices,supplier,pid,expiration),inTimeStamp,producedDateTimeStamp);
                         super.setMessageType( Manage.getController_buy().P_buy_Error,  Manage.getController_buy().L_buy_Error, "message");
                         Manage.getController_buy().L_buy_Error.setText("已经成功修改,编号为:"+buyV.getBuyid()+"对象");
                         B_closeMaster();
@@ -193,7 +193,7 @@ public class Controller_buy_update_insert extends ViewAssistImpl implements Init
     @FXML/**输入时候判断是否存在**/
     public void existBuyId(){
         if(super.isnumber(inid.getText())){
-            buyMapper mapper = BaseHolder.getApplicationContext().getBean("buyMapper",buyMapper.class);
+            BuyMapper mapper = BaseHolder.getApplicationContext().getBean("buyMapper", BuyMapper.class);
             if(mapper.findBuyByIds(Integer.valueOf(inid.getText()))!=null){
                 show_Dialog("当前编号已经存在,请重新输入");
             }

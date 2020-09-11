@@ -1,9 +1,9 @@
 package view.util;
 
-import com.Bean.Account.Account;
-import com.Bean.Persons.Pcount;
-import com.dao.departmentMapper;
-import com.dao.personsMapper;
+import com.bean.account.Account;
+import com.bean.persons.Pcount;
+import com.dao.DepartmentMapper;
+import com.dao.PersonsMapper;
 import com.spring.BaseHolder;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker;
@@ -125,7 +125,7 @@ public class Manage {
                 });
     }
     private void depCharts_RStart(){
-        departmentMapper mapper = BaseHolder.getApplicationContext().getBean("departmentMapper",departmentMapper.class);
+        DepartmentMapper mapper = BaseHolder.getApplicationContext().getBean("departmentMapper", DepartmentMapper.class);
         personsCountList = new ArrayList<>();
         for(Pcount p:mapper.count_personsByDep())
             personsCountList.add(p.getPcount());
@@ -176,7 +176,7 @@ public class Manage {
         String today = localDate.toString();
         String startTime = today+" 00:00:00";
         String endTime = today+" 23:59:00";
-        personsMapper mapper = BaseHolder.getApplicationContext().getBean("personsMapper",personsMapper.class);
+        PersonsMapper mapper = BaseHolder.getApplicationContext().getBean("personsMapper", PersonsMapper.class);
 //        System.out.println(localDate);
 //        System.out.println(startTime);
 //        System.out.println(endTime);

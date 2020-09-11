@@ -31,13 +31,13 @@
 
     <!--    配置personsMapper对象-->
     <bean id="personsMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.dao.personsMapper"/>
+        <property name="mapperInterface" value="com.dao.PersonsMapper"/>
         <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
 
     <!--    配置inventoryMapper对象-->
     <bean id="inTableMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.dao.inTableMapper"/>
+        <property name="mapperInterface" value="com.dao.InTableMapper"/>
         <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
 
@@ -45,7 +45,7 @@
 
     <!--    配置buyMapper对象-->
     <bean id="buyMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.dao.buyMapper"/>
+        <property name="mapperInterface" value="com.dao.BuyMapper"/>
         <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
 
@@ -53,32 +53,32 @@
 
     <!--    配置goodsMapper对象-->
     <bean id="goodsMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.dao.goodsMapper"/>
+        <property name="mapperInterface" value="com.dao.GoodsMapper"/>
         <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
 
 
     <!--    配置departmentMapper对象-->
     <bean id="departmentMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.dao.departmentMapper"/>
+        <property name="mapperInterface" value="com.dao.DepartmentMapper"/>
         <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
 
     <!--    配置accountMapper对象-->
     <bean id="accountMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.dao.accountMapper"/>
+        <property name="mapperInterface" value="com.dao.AccountMapper"/>
         <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
 
     <!--    配置stockMapper对象-->
     <bean id="stockMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.dao.stockMapper"/>
+        <property name="mapperInterface" value="com.dao.StockMapper"/>
         <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
 
     <!--    配置setMapper对象-->
     <bean id="setMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.dao.setMapper"/>
+        <property name="mapperInterface" value="com.dao.SetMapper"/>
         <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
 

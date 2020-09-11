@@ -1,7 +1,7 @@
 package view.new_conotroller.goods;
-import com.BeanVo.GoodsVo;
+import com.beanvo.GoodsVo;
 import com.jfoenix.controls.*;
-import com.service.Impl.goodsServiceImpl;
+import com.service.impl.GoodsServiceImpl;
 import com.spring.BaseHolder;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
@@ -52,15 +52,15 @@ public class Controller_goods extends ViewAssistImpl implements Initializable {
 
     private static ObservableList<GoodsVo> GoodsDate=FXCollections.observableArrayList();
 
-    private goodsServiceImpl service;
+    private GoodsServiceImpl service;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Error_hide();
         Manage.setController_goods(this);
-        service = BaseHolder.getApplicationContext().getBean("goodsService", goodsServiceImpl.class);
-        service.set_JFXTreeTableColumn(select,id,bClass,merchid,gname,gaddr,money,bName,set);
+        service = BaseHolder.getApplicationContext().getBean("goodsService", GoodsServiceImpl.class);
+        service.setJFXTreeTableColumn(select,id,bClass,merchid,gname,gaddr,money,bName,set);
 
-        service.show_JFXTreeTableColumn();
+        service.showJFXTreeTableColumn();
 //        模糊查询
         goodsSearchField.textProperty().addListener(setupSearchField(goodsTreeTableView));
     }
@@ -80,7 +80,7 @@ public class Controller_goods extends ViewAssistImpl implements Initializable {
             L_Error.setText("请至少选中一个需要删除的对象");
             return;
         }
-        service.show_JFXTreeTableColumn();
+        service.showJFXTreeTableColumn();
         super.setMessageType(P_Error,L_Error,"message");
         L_Error.setText("选中的对象删除成功");
     }
@@ -95,7 +95,7 @@ public class Controller_goods extends ViewAssistImpl implements Initializable {
     public void B_refresh(){
         System.out.println("商品管理刷新按钮按下");
         goodsTreeTableView.setRoot(null);
-        service.show_JFXTreeTableColumn();
+        service.showJFXTreeTableColumn();
     }
     private  Stage stage ;
     @FXML

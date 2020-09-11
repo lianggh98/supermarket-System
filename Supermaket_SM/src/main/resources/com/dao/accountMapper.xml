@@ -15,9 +15,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- account -->
-<mapper namespace="com.dao.accountMapper" >
+<mapper namespace="com.dao.AccountMapper" >
 <!--    根据当日时间查找出今日的全部登录记录-->
-    <select id="findLoginRecordAll"   resultType="com.Bean.Account.Loginrecord" parameterType="map">
+    <select id="findLoginRecordAll" resultType="com.bean.account.Loginrecord" parameterType="map">
             SELECT loginrecord.*,account.`user`,account.`comment`
             FROM `loginrecord`
             LEFT JOIN account ON account.id = loginrecord.loginid
@@ -27,7 +27,7 @@
     </select>
 
 <!--    根据今日登陆时间汇总出账号登录-->
-    <select id="CountTodayLoginRecordAll" resultType="com.Bean.Account.loginRecordCount">
+    <select id="CountTodayLoginRecordAll" resultType="com.bean.account.loginRecordCount">
         SELECT account.`comment`,
 		COUNT(*) as Lcount
 		FROM loginrecord
@@ -36,16 +36,16 @@
     </select>
 
 <!--   根据账号密码来找对应的信息-->
-    <select id="findUserPassword"  resultType="com.Bean.Account.Account" parameterType="map">
+    <select id="findUserPassword" resultType="com.bean.account.Account" parameterType="map">
         SELECT *
         FROM `account`
         WHERE account.`user` = #{user} AND account.`password` = #{password}
     </select>
 
     <!-- 插入数据 -->
-    <insert id="insertLoginrecord"  parameterType="java.lang.Integer">
+    <insert id="InsertLoginRecord"  parameterType="java.lang.Integer">
         INSERT INTO loginrecord (
-             loginid
+             LoginId
         ) VALUES (
             #{loginid}
         )

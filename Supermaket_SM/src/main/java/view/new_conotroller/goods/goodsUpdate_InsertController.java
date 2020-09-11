@@ -1,12 +1,12 @@
 package view.new_conotroller.goods;
 
-import com.BeanVo.GoodsVo;
-import com.dao.goodsMapper;
+import com.beanvo.GoodsVo;
+import com.dao.GoodsMapper;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXTextField;
-import com.service.Impl.goodsServiceImpl;
+import com.service.impl.GoodsServiceImpl;
 import com.spring.BaseHolder;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -47,11 +47,11 @@ public class goodsUpdate_InsertController extends ViewAssistImpl implements Init
     @FXML
     JFXComboBox<String> bname;
 
-    private goodsServiceImpl service;
+    private GoodsServiceImpl service;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if(service==null)
-            service=BaseHolder.getApplicationContext().getBean("goodsService", goodsServiceImpl.class);
+            service=BaseHolder.getApplicationContext().getBean("goodsService", GoodsServiceImpl.class);
             ViewAssistImpl viewAssist = BaseHolder.getApplicationContext().getBean("ViewAssistImpl",ViewAssistImpl.class);
 //        清除dialog顯示
         root.getChildren().remove(dialog);
@@ -89,17 +89,17 @@ public class goodsUpdate_InsertController extends ViewAssistImpl implements Init
 
         switch (temp){
             case 0:/**提交**/
-                service.goods_Update$Insert("insert",stringList);
+                service.goodsUpdate$Insert("insert",stringList);
                 Manage.getController_goods().L_Error.setText("对象添加成功");
                 super.clearText(gid,gname,merchId,money,addr,bid);
             break;
             case 1:/**修改**/
-                service.goods_Update$Insert("update",stringList);
+                service.goodsUpdate$Insert("update",stringList);
                 Manage.getController_goods().L_Error.setText("对象修改成功");
             break;
         }
         B_closeMaster();
-        service.show_JFXTreeTableColumn();
+        service.showJFXTreeTableColumn();
         super.setMessageType(Manage.getController_goods().P_Error,Manage.getController_goods().L_Error,"message");
     }
     @FXML
@@ -123,7 +123,7 @@ public class goodsUpdate_InsertController extends ViewAssistImpl implements Init
     }
     public void existGoodsId(){
         if(super.isnumber(gid.getText())){
-            goodsMapper mapper = BaseHolder.getApplicationContext().getBean("goodsMapper",goodsMapper.class);
+            GoodsMapper mapper = BaseHolder.getApplicationContext().getBean("goodsMapper", GoodsMapper.class);
             if(mapper.findGoodNameById(Integer.valueOf(gid.getText()))!=null){
                 show_Dialog("数据库内已经存在此商品编号,请重新输入");
             }

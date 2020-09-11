@@ -1,15 +1,14 @@
 package view.util;
 
-import com.Bean.Buy.Supplier;
-import com.Bean.Goods.Goods;
-import com.Bean.Inventory.Warehouse;
-import com.Bean.Persons.Persons;
-import com.dao.goodsMapper;
-import com.dao.personsMapper;
-import com.dao.buyMapper;
-import com.dao.stockMapper;
+import com.bean.buy.Supplier;
+import com.bean.goods.Goods;
+import com.bean.inventory.Warehouse;
+import com.bean.persons.Persons;
+import com.dao.GoodsMapper;
+import com.dao.PersonsMapper;
+import com.dao.BuyMapper;
+import com.dao.StockMapper;
 import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
 import com.spring.BaseHolder;
 import javafx.animation.Animation;
@@ -24,7 +23,6 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -343,7 +341,7 @@ public class ViewAssistImpl {
     * @Date: 2020/7/5
     */
     public void autoSelectedGid(String id,TextField gname) {
-        goodsMapper mapper = BaseHolder.getApplicationContext().getBean("goodsMapper",goodsMapper.class);
+        GoodsMapper mapper = BaseHolder.getApplicationContext().getBean("goodsMapper", GoodsMapper.class);
         Integer gid  = Integer.valueOf(id);
         Goods goods =  mapper.findGoodNameById(gid);
 
@@ -365,7 +363,7 @@ public class ViewAssistImpl {
     * @Date: 2020/7/5
     */
     public void autoSelectedPid(String id,TextField pname) {
-        personsMapper personsMapper = BaseHolder.getApplicationContext().getBean("personsMapper",personsMapper.class);
+        PersonsMapper personsMapper = BaseHolder.getApplicationContext().getBean("personsMapper", PersonsMapper.class);
         Integer gid  = Integer.valueOf(id);
         Persons persons =  personsMapper.findPersonsByIds(gid);
         if(persons==null){
@@ -385,7 +383,7 @@ public class ViewAssistImpl {
     * @Date: 2020/7/17
     */
     public void autoSelectedSupplier(String id,Label pname){
-        buyMapper buyMapper = BaseHolder.getApplicationContext().getBean("buyMapper",buyMapper.class);
+        BuyMapper buyMapper = BaseHolder.getApplicationContext().getBean("buyMapper", BuyMapper.class);
         Integer supplierId  = Integer.valueOf(id);
         Supplier supplier =  buyMapper.findSupplierNameByid(supplierId);
         if(supplier==null){
@@ -433,7 +431,7 @@ public class ViewAssistImpl {
     }
 
     public void autoSelectedWid(String id,TextField textField){
-        stockMapper mapper = BaseHolder.getApplicationContext().getBean("stockMapper", stockMapper.class);
+        StockMapper mapper = BaseHolder.getApplicationContext().getBean("stockMapper", StockMapper.class);
         Integer wid  = Integer.valueOf(id);
         Warehouse warehouse =  mapper.findWarehouseById(wid);
         if(warehouse==null){

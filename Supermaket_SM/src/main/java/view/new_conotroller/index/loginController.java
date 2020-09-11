@@ -1,20 +1,15 @@
 package view.new_conotroller.index;
 
-import com.Bean.Account.Account;
-import com.dao.accountMapper;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import com.service.Impl.accountServiceImpl;
+import com.service.impl.AccountServiceImpl;
 import com.spring.BaseHolder;
-import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -23,7 +18,6 @@ import view.util.ViewAssistImpl;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class loginController extends ViewAssistImpl implements Initializable {
@@ -46,7 +40,7 @@ public class loginController extends ViewAssistImpl implements Initializable {
     JFXButton acceptButton;
 
 
-    private accountServiceImpl service;
+    private AccountServiceImpl service;
     private Stage menu;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -54,7 +48,7 @@ public class loginController extends ViewAssistImpl implements Initializable {
         new Thread(()->{
             //绑定dilog按鈕
             acceptButton.setOnAction(action -> dialog.close());
-            service = BaseHolder.getApplicationContext().getBean("accountService",accountServiceImpl.class);
+            service = BaseHolder.getApplicationContext().getBean("accountService", AccountServiceImpl.class);
         }).start();
 
 

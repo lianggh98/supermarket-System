@@ -15,9 +15,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- department -->
-<mapper namespace="com.dao.departmentMapper">
+<mapper namespace="com.dao.DepartmentMapper">
     <!-- 字段映射 -->
-    <resultMap id="departmentMap" type="com.Bean.Persons.Department">
+    <resultMap id="departmentMap" type="com.bean.persons.Department">
         <id column="id" property="id" jdbcType="INTEGER" />
         <result column="depname" property="depname" jdbcType="VARCHAR" />
     </resultMap>
@@ -33,7 +33,7 @@
     </select>
 
     <!-- 查询所有数据 -->
-    <select id="findPostAll" resultType="com.Bean.Persons.Post">
+    <select id="findPostAll" resultType="com.bean.persons.Post">
         SELECT
                  id, postname
         FROM post
@@ -43,7 +43,7 @@
 
 
     <!-- 人员汇总 -->
-    <select id="count_personsByDep" resultType="com.Bean.Persons.Pcount" >
+    <select id="count_personsByDep" resultType="com.bean.persons.Pcount" >
         SELECT department.depname ,
         COUNT(*) as Pcount
         FROM `persons` persons

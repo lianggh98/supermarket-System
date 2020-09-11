@@ -1,11 +1,11 @@
 package view.new_conotroller.stock;
 
 
-import com.BeanVo.StockVo;
+import com.beanvo.StockVo;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
-import com.service.Impl.stockServiceImpl;
+import com.service.impl.StockServiceImpl;
 import com.spring.BaseHolder;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -44,7 +44,7 @@ public class Controller_stock extends ViewAssistImpl implements Initializable {
 
 
 
-    private stockServiceImpl stockService;
+    private StockServiceImpl stockService;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -53,9 +53,9 @@ public class Controller_stock extends ViewAssistImpl implements Initializable {
 
 
 
-        stockService = BaseHolder.getApplicationContext().getBean("stockService", stockServiceImpl.class);
-        stockService.set_JFXTreeTableColumn();
-        stockService.show_JFXTreeTableColumn();
+        stockService = BaseHolder.getApplicationContext().getBean("stockService", StockServiceImpl.class);
+        stockService.setJFXTreeTableColumn();
+        stockService.showJFXTreeTableColumn();
         stockSearchField.textProperty().addListener(stockSetupSearchField(stockTreeTableView));
     }
 
@@ -81,7 +81,7 @@ public class Controller_stock extends ViewAssistImpl implements Initializable {
     public void B_StockRefresh(){
         Platform.runLater(()->{
             //        仓库管理刷新按钮按下
-            stockService.show_JFXTreeTableColumn();
+            stockService.showJFXTreeTableColumn();
         });
     }
 
@@ -89,7 +89,7 @@ public class Controller_stock extends ViewAssistImpl implements Initializable {
 
     @FXML
     public void B_stock_remove(){
-        if(stockService.remove_selected()==0){
+        if(stockService.removeSelected()==0){
             super.setMessageType(P_stock_Error,L_stock_Error,"error");
             L_stock_Error.setText("至少选中一个需要删除的对象");
         }else{

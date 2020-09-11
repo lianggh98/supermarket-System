@@ -15,9 +15,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- persons -->
-<mapper namespace="com.dao.personsMapper">
+<mapper namespace="com.dao.PersonsMapper">
     <!-- 字段映射 -->
-    <resultMap id="personsMap" type="com.Bean.Persons.Persons">
+    <resultMap id="personsMap" type="com.bean.persons.Persons">
         <id column="id" property="id" jdbcType="INTEGER" />
         <result column="pname" property="pname" jdbcType="VARCHAR" />
         <result column="sex" property="sex" jdbcType="VARCHAR" />
@@ -74,7 +74,7 @@
     </select>
     
     <!-- 根据主键查询数据 -->
-    <select id="findPersonsByIds" resultType="com.Bean.Persons.Persons" parameterType="java.lang.Integer">
+    <select id="findPersonsByIds" resultType="com.bean.persons.Persons" parameterType="java.lang.Integer">
         SELECT
           id, pname, sex, age, tel, pnumber, depid, cometime,
           outtime
@@ -203,7 +203,7 @@
 
 
     <!-- 查询所有Vo数据 -->
-    <select id="findPersonsVoAll" resultType="com.BeanVo.PersonsVo" fetchSize="10">
+    <select id="findPersonsVoAll" resultType="com.beanvo.PersonsVo" fetchSize="10">
         SELECT p.id,p.pname,p.age,p.sex,p.tel,p.pnumber,p.cometime,p.outtime ,d.id AS depid ,d.depname ,pt.postname,pt.id AS postid
         FROM persons p
         LEFT JOIN department d ON p.depid = d.id
@@ -249,7 +249,7 @@
 
 
     <!-- 根据条件参数查询数据列表 -->
-    <select id="findPersonsVoByCondition" resultType="com.BeanVo.PersonsVo" parameterType="com.BeanVo.PersonsVo" flushCache="true">
+    <select id="findPersonsVoByCondition" resultType="com.beanvo.PersonsVo" parameterType="com.beanvo.PersonsVo" flushCache="true">
         SELECT p.id,p.pname,p.sex,p.tel,p.pnumber,p.cometime,p.outtime ,d.depname ,pt.postname,p.age
         FROM persons p
         LEFT JOIN department d ON p.depid = d.id
@@ -289,7 +289,7 @@
 
 
     <!-- 今日的入职人数-->
-    <select id="getToday_entry" resultType="com.Bean.Persons.Persons" parameterType="map">
+    <select id="getToday_entry" resultType="com.bean.persons.Persons" parameterType="map">
         SELECT persons.id FROM `persons`
         WHERE persons.cometime
         BETWEEN #{startTime} and #{endTime}

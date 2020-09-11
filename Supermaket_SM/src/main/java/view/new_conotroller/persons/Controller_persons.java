@@ -1,8 +1,8 @@
 package view.new_conotroller.persons;
 
-import com.BeanVo.PersonsVo;
+import com.beanvo.PersonsVo;
 import com.jfoenix.controls.*;
-import com.service.Impl.personsServiceImpl;
+import com.service.impl.PersonsServiceImpl;
 import com.spring.BaseHolder;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
@@ -49,15 +49,15 @@ public class Controller_persons extends ViewAssistImpl implements Initializable 
 
 
     private static ObservableList<PersonsVo> PersonsDate=FXCollections.observableArrayList();
-    private personsServiceImpl service;
+    private PersonsServiceImpl service;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Manage.setController_persons(this);
 
-        service = BaseHolder.getApplicationContext().getBean("personsService", personsServiceImpl.class);
-        service.set_JFXTreeTableColumn(select,id,name,sex,age,tel,number,depName,postName,comeTime,outTime,set);
+        service = BaseHolder.getApplicationContext().getBean("personsService", PersonsServiceImpl.class);
+        service.setJFXTreeTableColumn(select,id,name,sex,age,tel,number,depName,postName,comeTime,outTime,set);
 //        set_JFXTreeTableColumn();
-        service.show_JFXTreeTableColumn();
+        service.showJFXTreeTableColumn();
 //                   模糊查询
         personsSearchField.textProperty().addListener(setupSearchField(personsTreeTableView));
         P_Error.setVisible(false);
@@ -84,7 +84,7 @@ public class Controller_persons extends ViewAssistImpl implements Initializable 
        }
         super.setMessageType(P_Error,L_Error,"message");
         Manage.getController_persons().L_Error.setText("数据删除成功");
-        service.show_JFXTreeTableColumn();
+        service.showJFXTreeTableColumn();
         Manage manage = BaseHolder.getApplicationContext().getBean("stateManagement",Manage.class);
         manage.PersonsModelRStart();
         }
@@ -92,7 +92,7 @@ public class Controller_persons extends ViewAssistImpl implements Initializable 
     public void B_refresh(){
             System.out.println("人员管理刷新按钮按下");
             personsTreeTableView.setRoot(null);
-            service.show_JFXTreeTableColumn();
+            service.showJFXTreeTableColumn();
         }
     @FXML
     public void Error_hide(){
