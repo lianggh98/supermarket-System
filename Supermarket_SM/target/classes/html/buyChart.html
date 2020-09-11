@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body >
+<style>
+    .chart-container {
+        position: relative;
+        width: 100%;
+    }
+</style>
+<script src="js/Chart.js"></script>
+
+<div class="chart-container">
+    <canvas id="myChart"></canvas>
+</div>
+
+<script>
+    function getbuyDateByJava(info) {
+        let ctx = document.getElementById("myChart").getContext('2d');
+        new Chart(ctx,{
+            type:"line",
+            data:{
+                labels:[
+                    "星期一",
+                    "星期二",
+                    "星期三",
+                    "星期四",
+                    "星期五",
+                    "星期六",
+                    "星期日"],
+                datasets:[{
+                    label:"每周采购热力Chart",
+                    data:[info[0],info[1],info[2],info[3],info[4],info[5],info[6]],
+                    fill:false,
+                    borderColor:"rgb(255, 51, 0)","lineTension":0.1
+                }]
+            },
+            options:{}});
+    }
+
+</script>
+</body>
+</html>

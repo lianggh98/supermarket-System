@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableColumn?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="872.0" prefWidth="1317.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.new_conotroller.stock.Controller_stock">
+    <children>
+        <Pane maxHeight="50.0" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="1152.0" style="-fx-background-color: #141619;" VBox.vgrow="ALWAYS">
+         <children>
+            <StackPane maxHeight="80.0" prefHeight="50.0" prefWidth="141.0">
+               <children>
+                  <Label prefHeight="32.0" prefWidth="75.0" text="库存管理" textFill="#c4c4c5">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+         </children></Pane>
+      <HBox maxHeight="75.0" minHeight="53.0" prefHeight="53.0" prefWidth="1152.0" VBox.vgrow="ALWAYS">
+         <children>
+            <StackPane maxHeight="99.0" maxWidth="120.0" prefHeight="99.0" prefWidth="120.0">
+               <children>
+                  <JFXButton onMouseClicked="#B_StockRefresh" prefHeight="50.0" prefWidth="119.0" style="-fx-background-color: #0069D9;" text="数据刷新" textFill="#effff9">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin>
+            </StackPane>
+            <StackPane maxHeight="99.0" maxWidth="82.0" prefHeight="99.0" prefWidth="82.0" visible="false">
+               <children>
+                  <JFXButton prefHeight="50.0" prefWidth="96.0" style="-fx-background-color: #16a951;" text="增加" textFill="#effff9">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin>
+            </StackPane>
+            <HBox fx:id="P_stock_Error" prefHeight="45.0" prefWidth="430.0" style="-fx-background-color: #F8D7DA;" styleClass="div_radius" stylesheets="@../../new_css/index.css">
+               <HBox.margin>
+                  <Insets bottom="15.0" right="15.0" top="15.0" />
+               </HBox.margin>
+               <children>
+                  <Label fx:id="L_stock_Error" prefHeight="35.0" prefWidth="330.0" text="错误提示" textFill="#721c24">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <JFXButton onMouseClicked="#stock_Error_hide" prefHeight="35.0" prefWidth="74.0" text="隐藏">
+                     <HBox.margin>
+                        <Insets bottom="5.0" right="15.0" top="5.0" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="70.0" prefWidth="580.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <JFXButton onMouseClicked="#B_stock_remove" prefHeight="50.0" prefWidth="96.0" style="-fx-background-color: #C82333;" text="删除" textFill="#effff9" StackPane.alignment="CENTER_RIGHT">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </StackPane>
+         </children>
+         <VBox.margin>
+            <Insets left="15.0" right="15.0" top="15.0" />
+         </VBox.margin>
+      </HBox>
+      <VBox prefHeight="744.0" prefWidth="1119.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10" VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER" maxHeight="25.0" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets left="15.0" right="15.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label styleClass="title-label" />
+                        <Label fx:id="stockTreeTableViewCount" styleClass="title-label" />
+                        <StackPane HBox.hgrow="ALWAYS">
+                           <children>
+                              <StackPane maxWidth="200" StackPane.alignment="CENTER_RIGHT">
+                                 <children>
+                                    <JFXTextField fx:id="stockSearchField" promptText="模糊查询..." />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </StackPane>
+                     </children>
+                  </HBox>
+                  <JFXTreeTableView fx:id="stockTreeTableView" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <JFXTreeTableColumn fx:id="selected" prefWidth="53.0" text="选中" />
+                        <JFXTreeTableColumn fx:id="stockid" prefWidth="103.0" text="库存编号" />
+                        <JFXTreeTableColumn fx:id="inid" minWidth="3.0" prefWidth="87.0" text="入库编号" />
+                        <JFXTreeTableColumn fx:id="gid" minWidth="0.0" prefWidth="69.0" text="商品编号" />
+                        <JFXTreeTableColumn fx:id="gname" prefWidth="86.0" text="商品名称" />
+                        <JFXTreeTableColumn fx:id="produced" minWidth="2.0" prefWidth="189.0" text="生产日期" />
+                        <JFXTreeTableColumn fx:id="wname" minWidth="0.0" prefWidth="111.0" text="仓库名称" />
+                        <JFXTreeTableColumn fx:id="quantity" prefWidth="117.0" text="库存量" />
+                        <JFXTreeTableColumn fx:id="expiration" prefWidth="107.0" text="保质期" />
+                        <JFXTreeTableColumn fx:id="update" prefWidth="104.0" text="操作" />
+                     </columns>
+                     <VBox.margin>
+                        <Insets left="15.0" right="15.0" />
+                     </VBox.margin>
+                  </JFXTreeTableView>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <StackPane prefHeight="22.0" prefWidth="1317.0">
+         <children>
+            <Label prefHeight="15.0" prefWidth="135.0" text="Design comes from">
+               <StackPane.margin>
+                  <Insets right="200.0" />
+               </StackPane.margin>
+            </Label>
+            <Label prefHeight="15.0" prefWidth="71.0" text="\@第九组">
+               <StackPane.margin>
+                  <Insets left="50.0" />
+               </StackPane.margin>
+            </Label>
+         </children>
+      </StackPane>
+    </children>
+</VBox>

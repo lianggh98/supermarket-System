@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="js/Chart.js"></script>
+</head>
+<body >
+<style>
+	.personChart {
+		position: relative;
+		/*height: 200px;*/
+		width: 100%;
+
+	}
+</style>
+<script>
+	function getChart_Date_ByJava(info) {
+		let ctx = document.getElementById("myChart").getContext('2d');
+		new Chart(ctx, {
+			type: 'bar',
+			data: {
+				datasets: [{
+					label: "运营部门",
+					data: [info[0]],
+					backgroundColor: [
+						'rgba(255, 99, 13)',
+					],
+					borderColor: [
+						'rgba(255,99,132,1)',
+					],
+					borderWidth: 1
+				}, {
+					label: "前台部门",
+					data: [info[1]],
+					backgroundColor: [
+						'rgba(54, 162, 235)',
+					],
+					borderColor: [
+						'rgba(54, 162, 235)',
+					],
+					borderWidth: 1
+				},
+					{
+						label: "防损部门",
+						data: [info[2]],
+						backgroundColor: [
+							'rgba(255, 206, 86)',
+						],
+						borderColor: [
+							'rgba(255, 206, 86)',
+						],
+						borderWidth: 1
+					},
+					{
+						label: "后勤部",
+						data: [info[3]],
+						backgroundColor: [
+							'rgba(75, 192, 192)',
+						],
+						borderColor: [
+							'rgba(75, 192, 192)',
+						],
+						borderWidth: 1
+					}]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				},
+				legend: {
+					position: 'right',
+				}
+			}
+		});
+	}
+	function getLoginRecordDateByJava() {
+
+	}
+</script>
+	<div class="personChart">
+		<canvas id="myChart"></canvas>
+	</div>
+
+
+
+<script>
+
+</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableColumn?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="838.0" prefWidth="1140.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane maxHeight="50.0" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="1152.0" style="-fx-background-color: #141619;" VBox.vgrow="ALWAYS">
+         <children>
+            <StackPane maxHeight="80.0" prefHeight="50.0" prefWidth="141.0">
+               <children>
+                  <Label prefHeight="32.0" prefWidth="75.0" text="后台管理" textFill="#c4c4c5">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+         </children></Pane>
+      <HBox maxHeight="75.0" minHeight="75.0" prefHeight="75.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+         <children>
+            <StackPane maxHeight="99.0" maxWidth="120.0" prefHeight="99.0" prefWidth="120.0">
+               <children>
+                  <JFXButton prefHeight="50.0" prefWidth="119.0" style="-fx-background-color: #0069D9;" text="数据刷新" textFill="#effff9">
+                     <font>
+                        <Font size="18.0" />
+                     </font></JFXButton>
+               </children>
+               <HBox.margin>
+                  <Insets left="15.0" right="15.0" />
+               </HBox.margin>
+            </StackPane>
+            <StackPane maxHeight="99.0" maxWidth="82.0" prefHeight="99.0" prefWidth="82.0">
+               <children>
+                  <JFXButton prefHeight="50.0" prefWidth="96.0" style="-fx-background-color: #16a951;" text="删除" textFill="#effff9">
+                     <font>
+                        <Font size="18.0" />
+                     </font></JFXButton>
+               </children>
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin>
+            </StackPane>
+            <HBox fx:id="P_Error" prefHeight="45.0" prefWidth="430.0" style="-fx-background-color:#177cb0;" styleClass="div_radius" stylesheets="@../new_css/index.css">
+               <HBox.margin>
+                  <Insets bottom="15.0" right="15.0" top="15.0" />
+               </HBox.margin>
+               <children>
+                  <Label fx:id="L_Error" prefHeight="35.0" prefWidth="330.0" text="错误提示" textFill="#f3f9f1">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <JFXButton prefHeight="35.0" prefWidth="74.0" text="隐藏">
+                     <HBox.margin>
+                        <Insets bottom="5.0" right="15.0" top="5.0" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="75.0" prefWidth="375.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <JFXButton prefHeight="50.0" prefWidth="96.0" style="-fx-background-color: #e2041b;" text="增加" textFill="#effff9" StackPane.alignment="CENTER_RIGHT">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </HBox.margin>
+            </StackPane>
+
+         </children>
+      </HBox>
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="717.0" prefWidth="1148.0" spacing="10" VBox.vgrow="ALWAYS">
+         <children>
+            <StackPane prefHeight="21.0" prefWidth="1140.0">
+               <VBox.margin>
+                  <Insets left="15.0" right="15.0" />
+               </VBox.margin>
+               <children>
+                  <Label prefHeight="15.0" prefWidth="135.0" text="Design comes from">
+                     <StackPane.margin>
+                        <Insets right="200.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <Label prefHeight="15.0" prefWidth="71.0" text="\@第九组">
+                     <StackPane.margin>
+                        <Insets left="50.0" />
+                     </StackPane.margin>
+                  </Label>
+               </children>
+            </StackPane>
+         </children>
+      </VBox>
+   </children>
+</VBox>

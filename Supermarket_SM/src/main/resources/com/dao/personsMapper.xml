@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Welcome to use the TableGo Tools.
+    
+    http://www.tablego.cn
+    
+    http://vipbooks.iteye.com
+    http://blog.csdn.net/vipbooks
+    http://www.cnblogs.com/vipbooks
+    
+    Author: bianj
+    Email: tablego@qq.com
+    Version: 6.8.0
+-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- persons -->
+<mapper namespace="com.dao.PersonsMapper">
+    <!-- 字段映射 -->
+    <resultMap id="personsMap" type="com.bean.persons.Persons">
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="pname" property="pname" jdbcType="VARCHAR" />
+        <result column="sex" property="sex" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="INTEGER" />
+        <result column="tel" property="tel" jdbcType="VARCHAR" />
+        <result column="pnumber" property="pnumber" jdbcType="VARCHAR" />
+        <result column="depid" property="depid" jdbcType="INTEGER" />
+        <result column="cometime" property="cometime" jdbcType="TIMESTAMP" />
+        <result column="outtime" property="outtime" jdbcType="TIMESTAMP" />
+    </resultMap>
+    
+    <!-- 表查询字段 -->
+    <sql id="allColumns">
+        id, pname, sex, age, tel, pnumber, depid, cometime, 
+        outtime
+    </sql>
+    
+    <!-- 查询所有数据 -->
+    <select id="findPersonsAll" resultMap="personsMap">
+        SELECT
+        <include refid="allColumns" />
+        FROM persons
+    </select>
+    
+    <!-- 根据条件参数查询数据列表 -->
+    <select id="findPersonsByCondition" resultMap="personsMap" parameterType="map">
+        SELECT
+        <include refid="allColumns" />
+        FROM persons WHERE 1 = 1
+        <if test="pname != null and pname != ''">
+            AND pname LIKE CONCAT('%', #{pname}, '%')
+        </if>
+        <if test="sex != null and sex != ''">
+            AND sex LIKE CONCAT('%', #{sex}, '%')
+        </if>
+        <if test="age != null">
+            AND age = #{age}
+        </if>
+        <if test="tel != null and tel != ''">
+            AND tel LIKE CONCAT('%', #{tel}, '%')
+        </if>
+        <if test="pnumber != null and pnumber != ''">
+            AND pnumber LIKE CONCAT('%', #{pnumber}, '%')
+        </if>
+        <if test="depid != null">
+            AND depid = #{depid}
+        </if>
+        <if test="cometime != null">
+            AND cometime = #{cometime}
+        </if>
+        <if test="outtime != null">
+            AND outtime = #{outtime}
+        </if>
+    </select>
+    
+    <!-- 根据主键查询数据 -->
+    <select id="findPersonsByIds" resultType="com.bean.persons.Persons" parameterType="java.lang.Integer">
+        SELECT
+          id, pname, sex, age, tel, pnumber, depid, cometime,
+          outtime
+        FROM persons WHERE id =#{id};
+    </select>
+    
+    <!-- 插入数据 -->
+    <insert id="insertPersons" parameterType="map">
+        INSERT INTO persons (
+            id, pname, sex, age, tel, pnumber, depid, cometime,
+            outtime
+        ) VALUES (
+            #{id},
+            #{pname},
+            #{sex},
+            #{age},
+            #{tel},
+            #{pnumber},
+            #{depid},
+            #{cometime},
+            #{outtime}
+        )
+    </insert>
+    
+    <!-- 批量插入数据 -->
+    <insert id="insertPersonss" parameterType="list">
+        INSERT INTO persons (
+        id, pname, sex, age, tel, pnumber, depid, postid,
+        cometime, outtime
+        ) VALUES
+        <foreach collection="list" index="index" item="item" separator=",">
+            (
+            #{item.id},
+            #{item.pname},
+            #{item.sex},
+            #{item.age},
+            #{item.tel},
+            #{item.pnumber},
+            #{item.depid},
+            #{item.postid},
+            #{item.cometime},
+            #{item.outtime}
+            )
+        </foreach>
+    </insert>
+    
+    <!-- 修改数据 -->
+    <update id="updatePersons" parameterType="map">
+        UPDATE persons
+        <set>
+            <if test="pname != null">
+                pname = #{pname},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="age != null">
+                age = #{age},
+            </if>
+            <if test="tel != null">
+                tel = #{tel},
+            </if>
+            <if test="pnumber != null">
+                pnumber = #{pnumber},
+            </if>
+            <if test="depid != null">
+                depid = #{depid},
+            </if>
+            <if test="cometime != null">
+                cometime = #{cometime},
+            </if>
+            <if test="outtime != null">
+                outtime = #{outtime}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+    
+    <!-- 批量修改数据 -->
+    <update id="updatePersonss" parameterType="list">
+        <foreach collection="list" index="index" item="item" separator=";">
+            UPDATE persons
+            <set>
+                <if test="item.pname != null">
+                    pname = #{item.pname},
+                </if>
+                <if test="item.sex != null">
+                    sex = #{item.sex},
+                </if>
+                <if test="item.age != null">
+                    age = #{item.age},
+                </if>
+                <if test="item.tel != null">
+                    tel = #{item.tel},
+                </if>
+                <if test="item.pnumber != null">
+                    pnumber = #{item.pnumber},
+                </if>
+                <if test="item.depid != null">
+                    depid = #{item.depid},
+                </if>
+                <if test="item.cometime != null">
+                    cometime = #{item.cometime},
+                </if>
+                <if test="item.outtime != null">
+                    outtime = #{item.outtime}
+                </if>
+            </set>
+            WHERE id = #{item.id}
+        </foreach>
+    </update>
+    
+    <!-- 根据主键删除数据 -->
+    <delete id="deletePersonsById" parameterType="int">
+        DELETE FROM persons WHERE id = #{id}
+    </delete>
+    
+    <!-- 根据主键批量删除数据 -->
+    <delete id="deletePersonsByIds" parameterType="list">
+        DELETE FROM persons WHERE id IN
+        <foreach collection="list" index="index" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+
+
+    <!-- 查询所有Vo数据 -->
+    <select id="findPersonsVoAll" resultType="com.beanvo.PersonsVo" fetchSize="10">
+        SELECT p.id,p.pname,p.age,p.sex,p.tel,p.pnumber,p.cometime,p.outtime ,d.id AS depid ,d.depname ,pt.postname,pt.id AS postid
+        FROM persons p
+        LEFT JOIN department d ON p.depid = d.id
+        LEFT JOIN post pt ON p.postid = pt.id
+    </select>
+
+    <!-- 批量修改数据 -->
+    <update id="updatePersonssVo" parameterType="list">
+        <foreach collection="list" index="index" item="item" separator=";">
+            UPDATE persons
+            <set>
+                <if test="item.pname != null">
+                    pname = #{item.pname},
+                </if>
+                <if test="item.sex != null">
+                    sex = #{item.sex},
+                </if>
+                <if test="item.age != null">
+                    age = #{item.age},
+                </if>
+                <if test="item.tel != null">
+                    tel = #{item.tel},
+                </if>
+                <if test="item.pnumber != null">
+                    pnumber = #{item.pnumber},
+                </if>
+                <if test="item.depid != null">
+                    depid = #{item.depid},
+                </if>
+                <if test="item.cometime != null">
+                    cometime = #{item.cometime},
+                </if>
+                <if test="item.outtime != null">
+                    outtime = #{item.outtime}
+                </if>
+            </set>
+            WHERE id = #{item.id}
+        </foreach>
+    </update>
+
+
+
+
+
+    <!-- 根据条件参数查询数据列表 -->
+    <select id="findPersonsVoByCondition" resultType="com.beanvo.PersonsVo" parameterType="com.beanvo.PersonsVo" flushCache="true">
+        SELECT p.id,p.pname,p.sex,p.tel,p.pnumber,p.cometime,p.outtime ,d.depname ,pt.postname,p.age
+        FROM persons p
+        LEFT JOIN department d ON p.depid = d.id
+        LEFT JOIN post pt ON p.postid = pt.id
+        WHERE 1 = 1
+        <if test="pname != null and pname != ''">
+            AND pname LIKE CONCAT('%', #{pname}, '%')
+        </if>
+        <if test="sex != null and sex != ''">
+            AND sex = #{sex}
+        </if>
+        <if test="age != null">
+            AND age = #{age}
+        </if>
+        <if test="tel != null and tel != ''">
+            AND tel LIKE CONCAT('%', #{tel}, '%')
+        </if>
+        <if test="pnumber != null and pnumber != ''">
+            AND pnumber LIKE CONCAT('%', #{pnumber}, '%')
+        </if>
+        <if test="depid != null">
+            AND depid = #{depid}
+        </if>
+        <if test="id != null">
+            AND p.id = #{id}
+        </if>
+        <if test="postid != null">
+            AND postid = #{postid}
+        </if>
+        <if test="cometime != null">
+            AND cometime = #{cometime}
+        </if>
+        <if test="outtime != null">
+            AND outtime = #{outtime}
+        </if>
+    </select>
+
+
+    <!-- 今日的入职人数-->
+    <select id="getToday_entry" resultType="com.bean.persons.Persons" parameterType="map">
+        SELECT persons.id FROM `persons`
+        WHERE persons.cometime
+        BETWEEN #{startTime} and #{endTime}
+    </select>
+
+</mapper>
