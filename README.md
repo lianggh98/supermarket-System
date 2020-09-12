@@ -1,6 +1,4 @@
 # 超市管理系统
-## 系统截图
-![avatar](https://raw.githubusercontent.com/lianggh98/MarkdownPhotos/master/Supermarker/Login.png)
 ## 详细介绍
 ### [CSDN介绍跳转](https://blog.csdn.net/qq_43374880/article/details/107440302)
     由于学校的实训安排,每个人必须使用JavaGUi来设计一个简单的操作管理系统,拥有增删改除
