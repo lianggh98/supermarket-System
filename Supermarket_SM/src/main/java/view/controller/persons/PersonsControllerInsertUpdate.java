@@ -79,6 +79,9 @@ public class PersonsControllerInsertUpdate extends ViewAssistImpl implements Ini
         inTime.setValue(null);
         outDate.setValue(null);
         outTime.setValue(null);
+        sex.setValue("");
+        dep.setValue("");
+        post.setValue("");
 
     }
     @FXML

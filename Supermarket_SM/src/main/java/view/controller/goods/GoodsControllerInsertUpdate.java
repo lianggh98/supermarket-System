@@ -101,6 +101,7 @@ public class GoodsControllerInsertUpdate extends ViewAssistImpl implements Initi
     public void B_closeMaster(){
         Stage stage = (Stage) B_close.getScene().getWindow();
         super.clearText(gid,gname,merchId,money,addr,bid);
+        bname.setValue("");
         stage.close();
     }
     @FXML public void auto_Bname(){

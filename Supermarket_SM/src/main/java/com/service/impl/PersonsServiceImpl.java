@@ -206,6 +206,7 @@ public class PersonsServiceImpl implements PersonsServiceInter {
     @Override
     public void show_Dep_ComboBox(JFXComboBox<String> comboBox){
         List<Department> list =  departmentMapper.findDepartmentAll();
+        comboBox.getItems().add("");
         for(Department d:list) {
             comboBox.getItems().add(d.getId()+d.getDepname());
         }
@@ -213,6 +214,7 @@ public class PersonsServiceImpl implements PersonsServiceInter {
     @Override
     public void show_Post_ComboBox(JFXComboBox<String> comboBox){
         List<Post> list =  departmentMapper.findPostAll();
+        comboBox.getItems().add("");
         for(Post p:list) {
             comboBox.getItems().add(p.getId()+p.getPostname());
         }

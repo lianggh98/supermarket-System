@@ -173,7 +173,7 @@ public class BuyControllerInsertUpdate extends ViewAssistImpl implements Initial
 
     /**清除输入信息**/
     public void clear_InsertTemp(){
-        super.clearText(inid,number,gid,gname,model,price,prices,pid,pname,expiration);
+        super.clearText(inid,number,gid,gname,model,price,prices,pid,pname,expiration,supplier);
         inDate.setValue(null);
         inTime.setValue(null);
         producedDate.setValue(null);

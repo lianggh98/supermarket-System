@@ -211,6 +211,7 @@ public class GoodsServiceImpl implements GoodsServiceInter {
 
     @Override
     public void showBClassComboBox(JFXComboBox jfxComboBox){
+        jfxComboBox.getItems().add("");
         for(Bclass b:mapper.findBClassAll()){
             jfxComboBox.getItems().add(b.getBid()+b.getBname());
         }
