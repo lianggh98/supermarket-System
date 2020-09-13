@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import javafx.beans.value.ObservableValue;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.function.Function;
@@ -20,7 +21,7 @@ public interface PersonsServiceInter {
      * @Author Ryo
      * @create 2020/9/11 17:01
     */
-    void setJFXTreeTableColumn(JFXTreeTableColumn...columns);
+    void setJFXTreeTableColumn(JFXTreeTableColumn...columns) throws IOException;
     /**
      * 显示JFX树列
      * @return void
@@ -71,4 +72,22 @@ public interface PersonsServiceInter {
      * @create 2020/9/11 17:04
     */
     void persons_Insert$Update(String type, List<String> strings, Timestamp inTimeStamp, Timestamp outTimeStamp);
+
+    /**
+     * 获取最后的id然后递增一个
+     * @return Integer
+     * @Author Ryo
+     * @create 2020/9/12 13:02
+    */
+    Integer getNewIDByLastID();
+    
+   /**
+    * 根据人员身份证来获取年龄,并且判断身份证长度是否合格
+    * @param PNumber
+    * -450 身份证长度不合格
+    * @return java.lang.String
+    * @Author Ryo
+    * @create 2020/9/12 13:31
+   */
+    Integer getAgeByPersonsNumber(String PNumber);
 }

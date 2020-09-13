@@ -11,13 +11,16 @@ import javafx.scene.web.WebEngine;
 import javafx.stage.Stage;
 import netscape.javascript.JSObject;
 import org.springframework.stereotype.Service;
-import view.new_conotroller.buy.Controller_buy;
-import view.new_conotroller.buy.Controller_buy_update_insert;
-import view.new_conotroller.goods.Controller_goods;
-import view.new_conotroller.index.indexController;
-import view.new_conotroller.index.setController;
-import view.new_conotroller.persons.Controller_persons;
-import view.new_conotroller.stock.Controller_stock;
+import view.controller.buy.BuyController;
+import view.controller.buy.BuyControllerInsertUpdate;
+import view.controller.goods.GoodsController;
+import view.controller.goods.GoodsControllerInsertUpdate;
+import view.controller.index.IndexController;
+import view.controller.index.SetController;
+import view.controller.persons.PersonsController;
+import view.controller.persons.PersonsControllerInsertUpdate;
+import view.controller.stock.StockController;
+import view.controller.stock.StockControllerInsertUpdate;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -34,84 +37,124 @@ import java.util.List;
 @Service("stateManagement")
 public class Manage {
     private static Stage MenuStage;
-    public static void setMenuStage(Stage menuStage) {
-        MenuStage = menuStage;
-    }
+    private static Account account;
+    private static IndexController controller;
+    private static BuyController buyController;
+    private static BuyControllerInsertUpdate buyControllerInsertUpdate;
+    private static PersonsController personsController;
+    private static PersonsControllerInsertUpdate personsControllerInsertUpdate;
+    private static GoodsController goodsController;
+    private static GoodsControllerInsertUpdate goodsControllerInsertUpdate;
+    private static StockController stockController_;
+    private static StockControllerInsertUpdate stockControllerInsertUpdate;
+    private static SetController setController;
+
+
     public static Stage getMenuStage() {
         return MenuStage;
     }
 
-    private static Account account;
-    public static void setAccount(Account account) {
-        Manage.account = account;
+    public static void setMenuStage(Stage menuStage) {
+        MenuStage = menuStage;
     }
+
     public static Account getAccount() {
         return account;
     }
 
-    private static indexController controller;
-    public static void setController(indexController controller) {
-        Manage.controller = controller;
+    public static void setAccount(Account account) {
+        Manage.account = account;
     }
-    public static indexController getController() {
+
+    public static IndexController getController() {
         return controller;
     }
 
-    private static Controller_buy controller_buy;
-    public static void setController_buy(Controller_buy controller_buy) {
-        Manage.controller_buy = controller_buy;
-    }
-    public static Controller_buy getController_buy() {
-        return controller_buy;
+    public static void setController(IndexController controller) {
+        Manage.controller = controller;
     }
 
-    private static Controller_buy_update_insert controller_buy_update_insert;
-    public static void setController_buy_update_insert(Controller_buy_update_insert controller_buy_update_insert) {
-        Manage.controller_buy_update_insert = controller_buy_update_insert;
-    }
-    public static Controller_buy_update_insert getController_buy_update_insert() {
-        return controller_buy_update_insert;
+    public static BuyController getBuyController() {
+        return buyController;
     }
 
-    private static Controller_persons controller_persons;
-    public static void setController_persons(Controller_persons controller_persons) {
-        Manage.controller_persons = controller_persons;
-    }
-    public static Controller_persons getController_persons() {
-        return controller_persons;
+    public static void setBuyController(BuyController buyController) {
+        Manage.buyController = buyController;
     }
 
-
-    public static Controller_goods controller_goods;
-    public static void setController_goods(Controller_goods controller_goods) {
-        Manage.controller_goods = controller_goods;
-    }
-    public static Controller_goods getController_goods() {
-        return controller_goods;
+    public static BuyControllerInsertUpdate getBuyControllerInsertUpdate() {
+        return buyControllerInsertUpdate;
     }
 
-
-    public static view.new_conotroller.index.setController setController;
-    public static void setSetController(setController setController) {
-        Manage.setController = setController;
+    public static void setBuyControllerInsertUpdate(BuyControllerInsertUpdate buyControllerInsertUpdate) {
+        Manage.buyControllerInsertUpdate = buyControllerInsertUpdate;
     }
-    public static setController getSetController() {
+
+    public static PersonsController getPersonsController() {
+        return personsController;
+    }
+
+    public static void setPersonsController(PersonsController personsController) {
+        Manage.personsController = personsController;
+    }
+
+    public static PersonsControllerInsertUpdate getPersonsControllerInsertUpdate() {
+        return personsControllerInsertUpdate;
+    }
+
+    public static void setPersonsControllerInsertUpdate(PersonsControllerInsertUpdate personsControllerInsertUpdate) {
+        Manage.personsControllerInsertUpdate = personsControllerInsertUpdate;
+    }
+
+    public static GoodsControllerInsertUpdate getGoodsControllerInsertUpdate() {
+        return goodsControllerInsertUpdate;
+    }
+
+    public static void setGoodsControllerInsertUpdate(GoodsControllerInsertUpdate goodsControllerInsertUpdate) {
+        Manage.goodsControllerInsertUpdate = goodsControllerInsertUpdate;
+    }
+
+    public static SetController getSetController() {
         return setController;
     }
 
-    public static Controller_stock controller_stock;
-
-    public static void setController_stock(Controller_stock controller_stock) {
-        Manage.controller_stock = controller_stock;
+    public static void setSetController(SetController setController) {
+        Manage.setController = setController;
     }
 
-    public static Controller_stock getController_stock() {
-        return controller_stock;
+    public static StockController getStockController_() {
+        return stockController_;
+    }
+
+    public static void setStockController_(StockController stockController_) {
+        Manage.stockController_ = stockController_;
+    }
+
+    public static GoodsController getGoodsController() {
+        return goodsController;
+    }
+
+    public static void setGoodsController(GoodsController goodsController) {
+        Manage.goodsController = goodsController;
+    }
+
+    public static StockControllerInsertUpdate getStockControllerInsertUpdate() {
+        return stockControllerInsertUpdate;
+    }
+
+    public static void setStockControllerInsertUpdate(StockControllerInsertUpdate stockControllerInsertUpdate) {
+        Manage.stockControllerInsertUpdate = stockControllerInsertUpdate;
     }
 
     public WebEngine personsWebEngine;
     private List<Integer> personsCountList;
     private  JSObject personsWin;
+    /**
+     * Persons图表初始化
+     * @return void
+     * @Author Ryo
+     * @create 2020/9/12 17:04
+    */
     public void personsWebViewInit(){
         personsWebEngine = controller.html.getEngine();
         personsWebEngine.load(this.getClass().getClassLoader().getResource("html/personsChart.html").toExternalForm());
@@ -127,15 +170,17 @@ public class Manage {
     private void depCharts_RStart(){
         DepartmentMapper mapper = BaseHolder.getApplicationContext().getBean("departmentMapper", DepartmentMapper.class);
         personsCountList = new ArrayList<>();
-        for(Pcount p:mapper.count_personsByDep())
+        for(Pcount p:mapper.count_personsByDep()) {
             personsCountList.add(p.getPcount());
+        }
         personsWin.eval("getChart_Date_ByJava("+personsCountList+")");
     }
 
     private void inCompanyPersonsCounts(){
         Integer count  = 0;
-        for(Integer i :personsCountList)
+        for(Integer i :personsCountList) {
             count+=i;
+        }
         controller.L_personCount.setText(count.toString());
     }
 
@@ -177,9 +222,6 @@ public class Manage {
         String startTime = today+" 00:00:00";
         String endTime = today+" 23:59:00";
         PersonsMapper mapper = BaseHolder.getApplicationContext().getBean("personsMapper", PersonsMapper.class);
-//        System.out.println(localDate);
-//        System.out.println(startTime);
-//        System.out.println(endTime);
         HashMap map  =new HashMap();
         map.put("startTime",startTime);
         map.put("endTime",endTime);

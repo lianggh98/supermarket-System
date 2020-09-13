@@ -63,4 +63,12 @@ public interface BuyServiceInter {
      * @create 2020/9/11 21:35
     */
      List<Integer> getEveryDayBuyRecord(List<String> strings);
+
+    /**
+     * 获取最后的id然后递增一个
+     * @return Integer
+     * @Author Ryo
+     * @create 2020/9/12 13:02
+     */
+    Integer getNewIDByLastID();
 }

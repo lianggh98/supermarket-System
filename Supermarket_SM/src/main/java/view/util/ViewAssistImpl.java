@@ -106,7 +106,9 @@ public class ViewAssistImpl {
         secondStage.setScene(scene);
         if(cssUrl!=null)
         //设置Css文件
-        scene.getStylesheets().add(String.valueOf(getClass().getResource(cssUrl)));
+        {
+            scene.getStylesheets().add(String.valueOf(getClass().getResource(cssUrl)));
+        }
 //        设置传窗口不能自由扩展
         secondStage.setResizable(false);
 //        關閉窗口的標題欄
@@ -187,8 +189,9 @@ public class ViewAssistImpl {
     * @Date: 2020/6/23
     */
     public void clearText(TextField...textFields){
-        for(int i=0;i<textFields.length;i++)
-            textFields[i].clear();
+        for (TextField textField : textFields) {
+            textField.clear();
+        }
     }
     /**
     * @Description: 获取TextFiled的值
@@ -199,10 +202,11 @@ public class ViewAssistImpl {
     */
     public List<String> getText(TextField...textFields){
         List<String> list = new ArrayList<String>();
-        for(int i=0; i<textFields.length;i++)
-            if (!textFields[i].getText().equals("")){
-                list.add(textFields[i].getText());
+        for (TextField textField : textFields) {
+            if (!textField.getText().equals("")) {
+                list.add(textField.getText());
             }
+        }
         return list;
     }
     /**

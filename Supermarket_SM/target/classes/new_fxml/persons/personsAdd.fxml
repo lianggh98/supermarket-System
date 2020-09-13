@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="890.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.new_conotroller.persons.Controller_update_insert">
+<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="890.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.persons.PersonsControllerInsertUpdate">
     <children>
         <JFXDialog fx:id="dialog">
             <content>
@@ -178,46 +178,6 @@
                                         <Insets left="5.0" />
                                     </VBox.margin>
                                 </HBox>
-                                <HBox prefHeight="85.0" prefWidth="374.0">
-                                    <children>
-                                        <HBox prefHeight="85.0" prefWidth="110.0">
-                                            <children>
-                                                <StackPane prefHeight="85.0" prefWidth="92.0">
-                                                    <children>
-                                                        <Label text="年龄">
-                                                            <font>
-                                                                <Font size="18.0" />
-                                                            </font>
-                                                        </Label>
-                                                        <ImageView fitHeight="52.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                                                            <StackPane.margin>
-                                                                <Insets right="130.0" />
-                                                            </StackPane.margin>
-                                             <image>
-                                                <Image url="@../../new_images/icon_4s6xwysiv1f/年龄.png" />
-                                             </image>
-                                                        </ImageView>
-                                                    </children>
-                                                </StackPane>
-                                            </children>
-                                        </HBox>
-                                        <StackPane prefHeight="150.0" prefWidth="200.0">
-                                            <children>
-                                                <JFXTextField fx:id="age">
-                                                    <StackPane.margin>
-                                                        <Insets />
-                                                    </StackPane.margin>
-                                                </JFXTextField>
-                                            </children>
-                                            <HBox.margin>
-                                                <Insets left="10.0" />
-                                            </HBox.margin>
-                                        </StackPane>
-                                    </children>
-                                    <VBox.margin>
-                                        <Insets left="5.0" />
-                                    </VBox.margin>
-                                </HBox>
                         <HBox prefHeight="85.0" prefWidth="374.0">
                            <children>
                               <HBox prefHeight="85.0" prefWidth="110.0">
@@ -243,7 +203,44 @@
                               </HBox>
                               <StackPane prefHeight="150.0" prefWidth="200.0">
                                  <children>
-                                    <JFXTextField fx:id="pnumber">
+                                    <JFXTextField fx:id="pnumber" onKeyTyped="#CheckPNumber">
+                                       <StackPane.margin>
+                                          <Insets />
+                                       </StackPane.margin>
+                                    </JFXTextField>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </StackPane>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="85.0" prefWidth="374.0">
+                           <children>
+                              <HBox prefHeight="85.0" prefWidth="110.0">
+                                 <children>
+                                    <StackPane prefHeight="85.0" prefWidth="92.0">
+                                       <children>
+                                          <Label text="年龄">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="52.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                             <StackPane.margin>
+                                                <Insets right="130.0" />
+                                             </StackPane.margin>
+                                             <image>
+                                                <Image url="@../../new_images/icon_4s6xwysiv1f/年龄.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </HBox>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <JFXTextField fx:id="age">
                                        <StackPane.margin>
                                           <Insets />
                                        </StackPane.margin>

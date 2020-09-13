@@ -24,13 +24,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import view.new_conotroller.buy.Controller_buy_update_insert;
-import view.new_conotroller.buy.Controller_inTable;
+import view.controller.buy.BuyControllerInsertUpdate;
+import view.controller.buy.BuyControllerInTable;
 import view.util.Manage;
+import view.util.StageManage;
 import view.util.ViewAssistImpl;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 import java.util.function.Function;
 
@@ -102,7 +105,7 @@ public class BuyServiceImpl implements BuyServiceInter {
                                     jfxButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
                                         @Override
                                         public void handle(MouseEvent mouseEvent) {
-                                            Controller_inTable.setBuyVo(BuyDate.get(getIndex()));
+                                            BuyControllerInTable.setBuyVo(BuyDate.get(getIndex()));
                                             try {
                                                 viewAssist.getNO_Title_Stage(420,350,"入库信息补齐", "/new_fxml/buy/inTable.fxml","/new_images/shop_car.png",null).show();
                                             } catch (IOException e) {
@@ -113,7 +116,7 @@ public class BuyServiceImpl implements BuyServiceInter {
                                 }else {
                                     for(Integer i:integers){
                                         /** **/
-                                        if(BuyDate.get(getIndex()).getBuyid()==i){
+                                        if(BuyDate.get(getIndex()).getBuyid().equals(i)){
                                             jfxButton = new JFXButton("已入库");
                                             setGraphic(jfxButton);
                                             return;
@@ -123,7 +126,7 @@ public class BuyServiceImpl implements BuyServiceInter {
                                             jfxButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
                                                 @Override
                                                 public void handle(MouseEvent mouseEvent) {
-                                                    Controller_inTable.setBuyVo(BuyDate.get(getIndex()));
+                                                    BuyControllerInTable.setBuyVo(BuyDate.get(getIndex()));
                                                     try {
                                                         viewAssist.getNO_Title_Stage(420,350,"入库信息补齐", "/new_fxml/buy/inTable.fxml","/new_images/shop_car.png",null).show();
                                                     } catch (IOException e) {
@@ -162,20 +165,29 @@ public class BuyServiceImpl implements BuyServiceInter {
                                     @Override
                                     public void handle(MouseEvent event) {
 //                                      获取这一行的信息
-                                        BuyVo buyVo = BuyDate.get(getIndex());
-                                        System.out.println(buyVo);
+                                        BuyVo buyV = BuyDate.get(getIndex());
+                                        Manage.getBuyControllerInsertUpdate().L_model.setText("修改");
+                                        Manage.getBuyControllerInsertUpdate().inid.setText(buyV.getBuyid().toString());
+                                        Manage.getBuyControllerInsertUpdate().number.setText(buyV.getQuantity());
+                                        Manage.getBuyControllerInsertUpdate().gid.setText(buyV.getGid().toString());
+                                        Manage.getBuyControllerInsertUpdate().gname.setText(buyV.getGname());
+                                        Manage.getBuyControllerInsertUpdate().model.setText(buyV.getModel());
+                                        Manage.getBuyControllerInsertUpdate().price.setText(buyV.getPrice().toString());
+                                        Manage.getBuyControllerInsertUpdate().prices.setText(buyV.getPrices().toString());
+                                        Manage.getBuyControllerInsertUpdate().pid.setText(buyV.getPid().toString());
+                                        Manage.getBuyControllerInsertUpdate().pname.setText(buyV.getPname());
+                                        Manage.getBuyControllerInsertUpdate().supplier.setText(buyV.getSupplier().toString());
+                                        Manage.getBuyControllerInsertUpdate().expiration.setText(buyV.getExpiration());
+                                        String comtime = buyV.getComeTime().toString();
+                                        Manage.getBuyControllerInsertUpdate().inDate.setValue(LocalDate.parse(comtime.substring(0,comtime.indexOf(" "))));
+                                        Manage.getBuyControllerInsertUpdate().inTime.setValue(LocalTime.parse(comtime.substring(comtime.indexOf(" ")+1)));
+                                        String produced  = buyV.getProduced().toString();
+                                        Manage.getBuyControllerInsertUpdate().producedDate.setValue(LocalDate.parse(produced.substring(0,produced.indexOf(" "))));
+                                        Manage.getBuyControllerInsertUpdate().producedTime.setValue(LocalTime.parse(produced.substring(comtime.indexOf(" ")+1)));
 //                                      提交到修改页面
-                                        try {
-
-                                            Controller_buy_update_insert.setTemp(1);
-//                                            設置數據源
-                                            Controller_buy_update_insert.setBuyV(buyVo);
-                                            viewAssist.getNO_Title_Stage(730,600,"測試", "/new_fxml/buy/buyAdd.fxml","/new_images/shop_car.png",null).show();
-                                       } catch (IOException e) {
-                                            e.printStackTrace();
-                                        }
-
-//                                      修改
+                                        StageManage.getBuyAddStage().show();
+//                                        更改为修改模式
+                                        BuyControllerInsertUpdate.setTemp(1);
                                     }
                                 });
 
@@ -234,9 +246,9 @@ public class BuyServiceImpl implements BuyServiceInter {
             BuyDate.add(p);
         }
         //          存入TreeTableView
-        Manage.getController_buy().buyTreeTableView.setRoot(new RecursiveTreeItem<>(BuyDate, RecursiveTreeObject::getChildren));
+        Manage.getBuyController().buyTreeTableView.setRoot(new RecursiveTreeItem<>(BuyDate, RecursiveTreeObject::getChildren));
 //        关闭主节点的显示
-        Manage.getController_buy().buyTreeTableView.setShowRoot(false);
+        Manage.getBuyController().buyTreeTableView.setShowRoot(false);
     }
     @Override
     public int buySelected(){
@@ -295,4 +307,10 @@ public class BuyServiceImpl implements BuyServiceInter {
         return integerList;
     }
 
+    @Override
+    public Integer getNewIDByLastID() {
+        List<BuyVo> buyList = mapper.findBuyVoAll();
+        System.out.println(buyList.get(buyList.size()-1).getBuyid()+1);
+        return buyList.get(buyList.size()-1).getBuyid()+1;
+    }
 }

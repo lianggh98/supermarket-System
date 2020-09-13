@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="root" maxHeight="469.0" maxWidth="863.0" minHeight="469.0" minWidth="863.0" prefHeight="469.0" prefWidth="863.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.new_conotroller.goods.goodsUpdate_InsertController">
+<StackPane fx:id="root" maxHeight="469.0" maxWidth="863.0" minHeight="469.0" minWidth="863.0" prefHeight="469.0" prefWidth="863.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.goods.GoodsControllerInsertUpdate">
     <children>
         <JFXDialog fx:id="dialog">
             <content>

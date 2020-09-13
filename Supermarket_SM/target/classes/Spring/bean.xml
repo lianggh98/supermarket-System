@@ -20,13 +20,18 @@
     <bean id="BaseHolder" class="com.spring.BaseHolder" lazy-init="false" />
     <bean id="ViewAssistImpl" class="view.util.ViewAssistImpl" lazy-init="false" />
 
+    <bean id="BeanManage" class="com.spring.BeanManage" lazy-init="false"/>
+
     <!--注解扫描配置-->
     <context:component-scan base-package="com.service.impl"></context:component-scan>
     <context:component-scan base-package="com.service"></context:component-scan>
     <context:component-scan base-package="view.util"></context:component-scan>
-    <!-- 配置spring开启注解AOP的支持 -->
-    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-    <context:component-scan base-package="com.aspect"></context:component-scan>
+
+    <context:component-scan base-package="view.controller"></context:component-scan>
+
+<!--    &lt;!&ndash; 配置spring开启注解AOP的支持 &ndash;&gt;-->
+<!--    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>-->
+<!--    <context:component-scan base-package="com.aspect"></context:component-scan>-->
 
 
 <!--    加载其他的.xml文件-->

@@ -24,7 +24,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import view.new_conotroller.stock.Controller_Stock_UpdateInsert;
+import view.controller.stock.StockControllerInsertUpdate;
 import view.util.Manage;
 import view.util.ViewAssistImpl;
 
@@ -50,18 +50,18 @@ public class StockServiceImpl implements StockServiceInter {
     private static ObservableList<StockVo> StockDate= FXCollections.observableArrayList();
     @Override
     public void setJFXTreeTableColumn(){
-        setStockCellValueFactory(Manage.getController_stock().selected, StockVo -> new SimpleBooleanProperty(StockVo.getSelected()));
-        setStockCellValueFactory(Manage.getController_stock().stockid,StockVo -> new SimpleIntegerProperty(StockVo.getStockid()).asObject());
-        setStockCellValueFactory(Manage.getController_stock().inid,StockVo -> new SimpleIntegerProperty(StockVo.getInid()).asObject());
-        setStockCellValueFactory(Manage.getController_stock().gid,StockVo -> new SimpleIntegerProperty(StockVo.getGid()).asObject());
-        setStockCellValueFactory(Manage.getController_stock().gname,StockVo -> new SimpleStringProperty(StockVo.getGname()));
-        setStockCellValueFactory(Manage.getController_stock().quantity,StockVo -> new SimpleStringProperty(StockVo.getQuantity()));
-        setStockCellValueFactory(Manage.getController_stock().produced,StockVo -> new SimpleStringProperty(StockVo.getProduced().toString()));
-        setStockCellValueFactory(Manage.getController_stock().wname,StockVo -> new SimpleStringProperty(StockVo.getWname()));
-        setStockCellValueFactory(Manage.getController_stock().expiration,StockVo -> new SimpleStringProperty(StockVo.getExpiration()));
-        setStockCellValueFactory(Manage.getController_stock().update,StockVo -> new SimpleStringProperty(StockVo.getStockid().toString()));
+        setStockCellValueFactory(Manage.getStockController_().selected, StockVo -> new SimpleBooleanProperty(StockVo.getSelected()));
+        setStockCellValueFactory(Manage.getStockController_().stockid, StockVo -> new SimpleIntegerProperty(StockVo.getStockid()).asObject());
+        setStockCellValueFactory(Manage.getStockController_().inid, StockVo -> new SimpleIntegerProperty(StockVo.getInid()).asObject());
+        setStockCellValueFactory(Manage.getStockController_().gid, StockVo -> new SimpleIntegerProperty(StockVo.getGid()).asObject());
+        setStockCellValueFactory(Manage.getStockController_().gname, StockVo -> new SimpleStringProperty(StockVo.getGname()));
+        setStockCellValueFactory(Manage.getStockController_().quantity, StockVo -> new SimpleStringProperty(StockVo.getQuantity()));
+        setStockCellValueFactory(Manage.getStockController_().produced, StockVo -> new SimpleStringProperty(StockVo.getProduced().toString()));
+        setStockCellValueFactory(Manage.getStockController_().wname, StockVo -> new SimpleStringProperty(StockVo.getWname()));
+        setStockCellValueFactory(Manage.getStockController_().expiration, StockVo -> new SimpleStringProperty(StockVo.getExpiration()));
+        setStockCellValueFactory(Manage.getStockController_().update, StockVo -> new SimpleStringProperty(StockVo.getStockid().toString()));
         /***设置Checkbox*/
-        Manage.getController_stock().selected.setCellFactory(new Callback<TreeTableColumn<StockVo, Boolean>, TreeTableCell<StockVo, Boolean>>() {
+        Manage.getStockController_().selected.setCellFactory(new Callback<TreeTableColumn<StockVo, Boolean>, TreeTableCell<StockVo, Boolean>>() {
             @Override
             public TreeTableCell<StockVo, Boolean> call(TreeTableColumn<StockVo, Boolean> buyTreeTableView) {
                 TreeTableCell<StockVo, Boolean> tc = new TreeTableCell<StockVo, Boolean>() {
@@ -94,7 +94,7 @@ public class StockServiceImpl implements StockServiceInter {
             }
         });
         /***设置JFX修改按钮*/
-        Manage.getController_stock().update.setCellFactory(new Callback<TreeTableColumn<StockVo, String>, TreeTableCell<StockVo, String>>() {
+        Manage.getStockController_().update.setCellFactory(new Callback<TreeTableColumn<StockVo, String>, TreeTableCell<StockVo, String>>() {
             @Override
             public TreeTableCell<StockVo, String> call(TreeTableColumn<StockVo, String> goodsVoStringTreeTableColumn) {
                 TreeTableCell<StockVo, String> tc = new TreeTableCell<StockVo, String>(){
@@ -113,7 +113,7 @@ public class StockServiceImpl implements StockServiceInter {
                                    public void handle(MouseEvent mouseEvent) {
                                        try {
                                            StockVo stockVo = StockDate.get(getIndex());
-                                           Controller_Stock_UpdateInsert.setStockVo(stockVo);
+                                           StockControllerInsertUpdate.setStockVo(stockVo);
                                            viewAssist.getNO_Title_Stage(730,400,"測試", "/new_fxml/stock/stockAdd.fxml","/new_images/shop_car.png",null).show();
                                        } catch (IOException e) {
                                            e.printStackTrace();
@@ -140,11 +140,11 @@ public class StockServiceImpl implements StockServiceInter {
         }
 
         //          存入TreeTableView
-        Manage.getController_stock().stockTreeTableView.setRoot(new RecursiveTreeItem<>(StockDate, RecursiveTreeObject::getChildren));
+        Manage.getStockController_().stockTreeTableView.setRoot(new RecursiveTreeItem<>(StockDate, RecursiveTreeObject::getChildren));
 //        关闭主节点的显示
-        Manage.getController_stock().stockTreeTableView.setShowRoot(false);
+        Manage.getStockController_().stockTreeTableView.setShowRoot(false);
 //        设置树形结构可以编辑
-        Manage.getController_stock().stockTreeTableView.setEditable(true);
+        Manage.getStockController_().stockTreeTableView.setEditable(true);
     }
     @Override
     public <T> void setStockCellValueFactory(JFXTreeTableColumn<StockVo, T> column, Function<StockVo, ObservableValue<T>> mapper) {

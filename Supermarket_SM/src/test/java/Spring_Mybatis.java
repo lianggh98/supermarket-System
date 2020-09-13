@@ -1,4 +1,4 @@
-import com.dao.AccountMapper;
+import com.spring.BeanManage;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -14,11 +14,16 @@ public class Spring_Mybatis {
 
     @Test
     public void test(){
-
 //
-            ApplicationContext ac  =  new ClassPathXmlApplicationContext("/Spring/spring_mybatis.xml");
-            AccountMapper mapper =ac.getBean("accountMapper", AccountMapper.class);
-             System.out.println(mapper.CountTodayLoginRecordAll());
+        ApplicationContext ac  =  new ClassPathXmlApplicationContext("/Spring/bean.xml");
+        System.out.println(BeanManage.accountService);
+
+    }
+
+    @Test
+    public void P(){
+        String str = "4501111998";
+        System.out.println(Integer.valueOf(str.substring(6,10)));
 
     }
 }

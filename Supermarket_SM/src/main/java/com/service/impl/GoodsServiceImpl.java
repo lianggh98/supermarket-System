@@ -27,8 +27,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import view.new_conotroller.goods.goodsUpdate_InsertController;
+import view.controller.goods.GoodsControllerInsertUpdate;
 import view.util.Manage;
+import view.util.StageManage;
 import view.util.ViewAssistImpl;
 
 import java.io.IOException;
@@ -115,13 +116,16 @@ public class GoodsServiceImpl implements GoodsServiceInter {
                                 progress.setOnMouseClicked(new EventHandler<MouseEvent>() {
                                     @Override
                                     public void handle(MouseEvent mouseEvent) {
-                                        goodsUpdate_InsertController.setTemp(1);
-                                        goodsUpdate_InsertController.setG(GoodsDate.get(getIndex()));
-                                        try {
-                                            viewAssist.getNO_Title_Stage(863,469,"測試", "/new_fxml/goods/goodsAdd.fxml","/new_images/shop_car.png",null).show();
-                                        } catch (IOException e) {
-                                            e.printStackTrace();
-                                        }
+                                        GoodsVo g = GoodsDate.get(getIndex());
+                                        Manage.getGoodsControllerInsertUpdate().gid.setText(g.getId().toString());
+                                        Manage.getGoodsControllerInsertUpdate().gname.setText(g.getGname());
+                                        Manage.getGoodsControllerInsertUpdate().merchId.setText(g.getMerchid());
+                                        Manage.getGoodsControllerInsertUpdate().money.setText(g.getMoney().toString());
+                                        Manage.getGoodsControllerInsertUpdate().addr.setText(g.getGaddr());
+                                        Manage.getGoodsControllerInsertUpdate().bid.setText(g.getBClass().toString());
+                                        Manage.getGoodsControllerInsertUpdate().bname.setValue(g.getBClass()+g.getBname());
+                                        StageManage.getGoodsAddStage().show();
+                                        GoodsControllerInsertUpdate.setTemp(1);
                                     }
                                 });
                             }
@@ -163,11 +167,11 @@ public class GoodsServiceImpl implements GoodsServiceInter {
         }
 
         //          存入TreeTableView
-       Manage.getController_goods().goodsTreeTableView.setRoot(new RecursiveTreeItem<>(GoodsDate, RecursiveTreeObject::getChildren));
+       Manage.getGoodsController().goodsTreeTableView.setRoot(new RecursiveTreeItem<>(GoodsDate, RecursiveTreeObject::getChildren));
 //        关闭主节点的显示
-        Manage.getController_goods().goodsTreeTableView.setShowRoot(false);
+        Manage.getGoodsController().goodsTreeTableView.setShowRoot(false);
 //        设置树形结构可以编辑
-        Manage.getController_goods().goodsTreeTableView.setEditable(true);
+        Manage.getGoodsController().goodsTreeTableView.setEditable(true);
     }
     @Override
     public  <T> void setGoodsCellValueFactory(JFXTreeTableColumn<GoodsVo, T> column, Function<GoodsVo, ObservableValue<T>> mapper) {
@@ -210,5 +214,11 @@ public class GoodsServiceImpl implements GoodsServiceInter {
         for(Bclass b:mapper.findBClassAll()){
             jfxComboBox.getItems().add(b.getBid()+b.getBname());
         }
+    }
+
+    @Override
+    public Integer getNewIDByLastID() {
+       List<GoodsVo> goodsVos =mapper.findGoodsVoAll();
+        return goodsVos.get(goodsVos.size()-1).getId()+1;
     }
 }

@@ -98,11 +98,11 @@ public class InTableServiceImpl implements InTableServiceInter {
             inTableDate.add(p);
         }
         //          存入TreeTableView
-        Manage.getController_buy().inTableTreeTableView.setRoot(new RecursiveTreeItem<>(inTableDate, RecursiveTreeObject::getChildren));
+        Manage.getBuyController().inTableTreeTableView.setRoot(new RecursiveTreeItem<>(inTableDate, RecursiveTreeObject::getChildren));
 //        关闭主节点的显示
-        Manage.getController_buy().inTableTreeTableView.setShowRoot(false);
+        Manage.getBuyController().inTableTreeTableView.setShowRoot(false);
 //        设置树形结构可以编辑
-        Manage.getController_buy().inTableTreeTableView.setEditable(true);
+        Manage.getBuyController().inTableTreeTableView.setEditable(true);
     }
     @Override
     public <T> void setinTableCellValueFactory(JFXTreeTableColumn<IntableVo, T> column, Function<IntableVo, ObservableValue<T>> mapper) {
@@ -139,5 +139,11 @@ public class InTableServiceImpl implements InTableServiceInter {
         intable.setCometime(timestamp);
         mapper.insertIntable(intable);
         return intable.getInid();
+    }
+
+    @Override
+    public Integer getNewIDByLastID() {
+        List<IntableVo> inTableVoAll  =mapper.findInTableVoAll();
+        return inTableVoAll.get(inTableVoAll.size()-1).getInid()+1;
     }
 }

@@ -22,42 +22,55 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import view.util.Manage;
+import view.util.StageManage;
+import view.util.ViewAssistImpl;
 
+import java.io.IOException;
 import java.util.Optional;
+
+import static com.spring.BeanManage.viewAssistImpl;
 
 public class loginFx extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        //1.5menu
+        //1.5menu 直接打开
 //        Parent root = FXMLLoader.load(getClass().getResource("/new_fxml/index/new_index.fxml"));
 //        System.out.println(root);
 //        primaryStage.setTitle("超市后台管理系统");
-//        Scene scene = new Scene(root, 1300, 850);//显示大小
-//        primaryStage.getIcons().add(new Image("/new_images/shop_car.png"));      //设置标题icon
-//        primaryStage.setScene(scene);//设置窗体
-//        scene.getStylesheets().add(String.valueOf(getClass().getResource("/new_css/index.css")));//添加css
+//        //显示大小
+//        Scene scene = new Scene(root, 1300, 850);
+//        //设置标题icon
+//        primaryStage.getIcons().add(new Image("/new_images/shop_car.png"));
+//        //设置窗体
+//        primaryStage.setScene(scene);
+//        //添加css
+//        scene.getStylesheets().add(String.valueOf(getClass().getResource("/new_css/index.css")));
+//        Manage.setMenuStage(primaryStage);
 //        primaryStage.show();//显示
 
 
 
-//        登录窗口
-
+//        登录界面打开
         primaryStage.initStyle(StageStyle.UNDECORATED);
         Parent root = FXMLLoader.load(getClass().getResource("/new_fxml/index/login.fxml"));
         System.out.println(root);
         primaryStage.setTitle("超市后台管理系统");
-        Scene scene = new Scene(root, 500, 600);//显示大小
-        primaryStage.getIcons().add(new Image("/new_images/shop_car.png"));      //设置标题icon
-        primaryStage.setScene(scene);//设置窗体
-        scene.getStylesheets().add(String.valueOf(getClass().getResource("/new_css/index.css")));//添加css
+        //显示大小
+        Scene scene = new Scene(root, 500, 600);
+        //设置标题icon
+        primaryStage.getIcons().add(new Image("/new_images/shop_car.png"));
+        //设置窗体
+        primaryStage.setScene(scene);
+        //添加css
+        scene.getStylesheets().add(String.valueOf(getClass().getResource("/new_css/index.css")));
+//        存入全局管理控制
         Manage.setMenuStage(primaryStage);
-
-
-
-
         primaryStage.show();//显示
+
+
+
 
     }
 

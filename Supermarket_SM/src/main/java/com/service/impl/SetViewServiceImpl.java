@@ -21,7 +21,7 @@ import javafx.scene.control.TreeTableColumn;
 import javafx.util.Callback;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import view.new_conotroller.index.setController;
+import view.controller.index.SetController;
 import view.util.Manage;
 
 import java.util.List;
@@ -76,7 +76,7 @@ public class SetViewServiceImpl implements SetViewServiceInter {
                                         Manage.getSetController().supplierNameText.setText(s.getName());
                                         Manage.getSetController().supplierTelText .setText(s.getTel());
                                         Manage.getSetController().supplierAddrText.setText(s.getAddr());
-                                        setController.setSupplierTemp(1);
+                                        SetController.setSupplierTemp(1);
                                     }
                                 });
 
@@ -145,7 +145,7 @@ public class SetViewServiceImpl implements SetViewServiceInter {
                 break;
             case "update":
                 setMapper.updateSupplier(s);
-                setController.setSupplierTemp(0);
+                SetController.setSupplierTemp(0);
                 break;
         }
 

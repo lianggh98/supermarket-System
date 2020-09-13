@@ -10,7 +10,7 @@
 <?import javafx.geometry.Insets?>
 <?import com.jfoenix.controls.JFXDialog?>
 <?import com.jfoenix.controls.JFXDialogLayout?>
-<StackPane fx:controller="view.new_conotroller.Controller_dialog" fx:id="root" xmlns:fx="http://javafx.com/fxml/1"
+<StackPane fx:controller="view.controller.Controller_dialog" fx:id="root" xmlns:fx="http://javafx.com/fxml/1"
            xmlns="http://javafx.com/javafx/2.2">
     <VBox spacing="20" alignment="CENTER" maxWidth="400" maxHeight="300">
         <JFXButton fx:id="centerButton" prefWidth="220" prefHeight="30"
